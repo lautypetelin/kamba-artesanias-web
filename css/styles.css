@@ -1,0 +1,582 @@
+* { box-sizing: border-box; }
+
+body, header, nav, ul, li, a, main, div, h1, h2, h3, p, footer, label { margin: 0; padding: 0; }
+
+/* Colors */
+:root{
+  /* Marca y Acciones */
+  --color-primary: #c3206b;           /* Magenta principal */
+  --color-primary-variant: #e55591;   /* Magenta claro (Acento) */
+  
+  /* Superficies y Fondos */
+  --color-bg: #f2e7e2;                /* Fondo crema */
+  --color-surface: #ffffff;           /* Blanco para secciones limpias */
+  
+  /* Tipografía y Estados */
+  --color-text-main: #5c1236;         /* Texto oscuro sobre crema */
+  --color-text-on-primary: #f2e7e2;   /* Texto crema sobre magenta */
+  --color-active: #ffffff;            /* Para denotar la página actual en el nav */
+}
+
+body{
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+
+  display: flex;                        /* Convierte el body en un contenedor flex vertical de altura completa para controlar el footer */
+  flex-direction: column;
+  min-height: 100vh;                    /* Ocupará como mínimo de alto el 100% del viewport */
+}
+
+main{
+  flex-grow: 1;                         /* Absorbe el espacio disponible en el eje vertical para empujar el footer al final de la página */
+}
+
+/* ---------- HEADER SECTION (Mobile) ---------- */
+.header{
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: space-between;       /* Distribuye el espacio sobrante entre los elementos (Logo y Botón) empujándolos a los extremos */
+  align-items: center;                  /* Alinea los elementos hijos en el eje transversal (vertical) al centro */
+
+  position: sticky;                     /* Fija el elemento al scroll pero respetando su espacio original en el flujo del documento */
+  top: 0;                               /* Define el punto de anclaje para el sticky (borde superior) */
+  text-align: center;                   /* Hereda la alineación centrada a los elementos de texto internos */
+  font-size: 1.25rem;                   /* Tamaño de fuente relativo (1.25 * 16px del navegador = 20px) */
+  box-shadow: 0 0 5px #0003;          /* Sombra sutil: 0 desplazamiento, 5px de desenfoque y color negro con 20% de opacidad */
+  z-index: 10;                          /* Establece el orden en el eje Z; valores más altos quedan "al frente" */
+}
+
+/* The Checkbox Hack */
+  .header__checkbox{ display: none; }   /* Oculta el elemento visualmente y lo quita del flujo, pero sigue siendo funcional para el label */
+
+  .header__open-nav-button{
+    color: var(--color-bg);
+    font-size: 3rem;                    /* Tamaño de fuente relativo (3 * 16px del navegador = 48px) */
+    font-weight: 600;                   /* Define el peso (grosor) de la fuente (Semi-bold) */
+    cursor: pointer;                    /* Cambia el cursor a la "manito" para indicar que el elemento es interactivo */
+
+    position: absolute;                 /* Posicionamiento relativo al ancestro posicionado más cercano (en este caso, .header) */
+    right: 20px;                        /* Desplaza el elemento 20px hacia la izquierda desde el borde derecho de su contenedor padre */
+    
+    transition: scale 0.2s ease;
+  }
+
+  .header__open-nav-button:hover{
+    scale: 1.12
+  }
+
+  /* ---------- ○ ---------- */
+
+  .header__nav{
+    display: none;                      /* Oculta el elemento y lo elimina del flujo del documento (Se hará visible con display: flex gracias al checkbox) */
+    background-color: inherit;          /* Toma el color de fondo de su contenedor padre (.header) */
+    width: 100%;                        /* Se extiende a lo ancho de su contenedor posicionado */
+    height: 100vh;                      /* Define una altura fija equivalente al 100% del alto de la ventana (Viewport Height) */
+
+    position: absolute;                 /* Lo posiciona de forma absoluta respecto al ancestro posicionado (.header) */
+    top: 0;                             /* Lo ubica exactamente en el borde superior de su ancestro de referencia */
+    z-index: -1;                        /* Lo desplaza hacia atrás en el eje Z para que el logo y el botón queden por encima */
+  }
+
+  .header__checkbox:checked ~ .header__nav{       /* Selector de hermano general (~) - Selecciona todos los hermanos que le siguen */
+    display: flex;                                /* Cuando el checkbox está activo, cambia el estado de visualización a Flexbox */
+  }
+/* -------------------------------------------------------------------- */
+
+.header__logo{
+  width: 64px;                          /* Establece un ancho fijo para la imagen del logo */
+  max-width: 100%;                      /* Restringe el ancho de la imagen para que nunca supere el ancho disponible de su contenedor (.header__logo-container) */
+  margin: 10px 20px;                    /* Crea un espacio exterior de 10px arriba/abajo y 20px a los lados para separar el logo del borde del header */
+
+  filter: drop-shadow(0 0 5px var(--color-text-main));  /* Aplica una sombra proyectada que sigue el contorno real de los píxeles (ideal para logos transparentes PNG) */
+  transition: filter 0.2s ease, scale 0.2s ease;
+}
+
+.header__logo:hover{
+  filter: drop-shadow(0 0 5px var(--color-active));
+  scale: 1.05;
+}
+
+.header__nav-list{
+  list-style: none;                     /* Elimina los marcadores o viñetas predeterminadas de la lista (puntos) */
+  height: 40vh;                         /* Establece una altura relativa al 40% de la altura total de la pantalla (Viewport Height) */
+  margin: auto;                         /* Centra el bloque de la lista tanto horizontal como verticalmente al absorber el espacio sobrante dentro del nav (Gracias a la línea 78) */
+
+  display: flex;                        /* Activa el modelo de caja flexible para controlar la disposición de los enlaces */
+  flex-direction: column;               /* Cambia la dirección del eje principal a vertical (los links se apilan uno abajo del otro) */
+  justify-content: space-evenly;        /* Distribuye los elementos de forma equitativa, dejando el mismo espacio entre ellos y hacia los bordes */
+}
+
+.header__nav-item a{
+  color: var(--color-bg);               /* Usa el tono crema para resaltar sobre el fondo magenta del menú */
+  text-decoration: none;                /* Elimina la decoración de subrayado predeterminada del navegador */
+  
+  display: inline-block;
+  transition: scale 0.2s ease;
+}
+
+.header__nav-item--active{              
+  color: var(--color-active);           /* Color distintivo (blanco) para indicar visualmente la ubicación actual del usuario */
+  font-weight: bold;                    /* Refuerza la jerarquía visual del enlace activo */
+}
+
+.header__nav-item a:is(:hover, :active){          /* Pseudo-clase funcional :is() para agrupar estados de interacción */
+  
+  /* Proporciona feedback visual de interactividad mediante cambio de color y cambio de escala */
+  color: var(--color-active);
+  scale: 1.1;
+}
+
+/* ---------- HEADER ENDS ---------- */
+
+/* ---------- HOME SECTION (Mobile) ---------- */
+.hero {
+  color: var(--color-surface);
+  background: linear-gradient(#0005),           /* Capa de fondo 1: Gradiente negro con 31% de opacidad (#0005) para oscurecer la imagen */
+              url('../assets/hero.png');          /* Capa de fondo 2: Imagen principal del hero (.png) */
+  background-size: cover;                         /* Asegura que la imagen de fondo cubra todo el contenedor, escalando y recortando sin perder su proporción original */
+  background-position: center;                    /* Posiciona la imagen siempre en el centro geométrico del contenedor hero */
+  
+  height: 80vh;                         /* Define una altura relativa al 80% de la altura total de la pantalla (Viewport Height) */
+
+  display: flex;                        /* Activa el modelo de caja flexible (Flexbox) para el control de la disposición de los hijos */
+  justify-content: center;              /* Alinea y centra los elementos hijos (.hero__content) en el eje principal (horizontal) */
+  align-items: center;                  /* Alinea y centra los elementos hijos en el eje transversal (vertical) */
+  text-align: center;                   /* Hereda la alineación centrada a los elementos de texto internos */
+}
+
+.hero__title {
+  text-wrap: balance;                   /* El navegador balancea el ancho de las líneas para evitar que queden palabras sueltas (huérfanas) al final, logrando un título simétrico y armónico */
+  font-size: 3rem;                      /* Tamaño de fuente relativo (3 * 16px del navegador = 48px) */
+  margin-bottom: 10px;                  /* Crea un espacio inferior para separarlo visualmente del subtítulo */
+}
+
+.hero__subtitle{
+  text-wrap: pretty;                    /* Optimiza el salto de línea para evitar que la última palabra del párrafo quede sola en una línea (viuda), mejorando la prolijidad visual. */
+  max-width: 600px;                     /* Se recomienda un ancho máximo para no fatigar la vista con líneas muy largas */
+}
+
+.hero__btn {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  display: inline-block;                /* Convierte el enlace en un elemento de bloque en línea para aplicar márgenes y paddings correctamente, sin que pierda su flujo natural */
+  padding: 15px 30px;                   /* Espaciado interno generoso (15px arriba/abajo, 30px lados) para aumentar el área de interacción (clic) */
+  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
+  border-radius: 30px;                  /* Define un radio de borde alto para lograr esquinas completamente redondeadas (tipo "píldora") */
+  font-weight: bold;                    /* Aumenta el peso de la fuente (Bold/700) para destacar la llamada a la acción */
+  margin-top: 30px;                     /* Crea una separación superior para distanciar el botón del texto de descripción */
+}
+
+.categories__title,
+.products__title {
+  color: var(--color-text-main);
+  text-align: center;                   /* Alinea el texto al centro de su elemento contenedor h2 */
+  margin: 40px 0 25px;                  /* Crea un espacio superior de 40px para distanciar de la sección anterior y 20px inferior para separarlo visualmente de la grilla */
+  font-size: 2rem;                      /* Tamaño de fuente relativo (2 * 16px del navegador = 32px) */
+}
+
+.categories__grid {
+  display: grid;
+  grid-template-columns: repeat(        /* Crea una grilla responsiva */
+    auto-fill,                          /* 'auto-fill' rellena la fila con tantas columnas como quepan.  */
+    minmax(200px, 1fr)                  /* 'minmax' asegura que las tarjetas nunca midan menos de 200px y se expandan proporcionalmente (1fr) */
+    ); 
+  gap: 25px;                            /* Establece una separación de 25px entre las tarjetas de categoría (grid-items) */
+  margin: 20px auto 30px;               /* Centra el bloque .categories__grid horizontalmente dentro de su elemento padre (.categories) */
+  max-width: 600px;                     /* Limita el ancho máximo para controlar la cantidad de columnas en pantallas muy grandes y evitar que se estiren demasiado */
+  padding: 0 15px;                      /* Genera un espacio de seguridad lateral (padding) para evitar que el contenido pegue contra los bordes del dispositivo en pantallas menores al max-width (ej. celulares). */
+}
+
+.categories__item img {
+  width: 120px;                         /* Establece un ancho fijo de 120px para la imagen de la categoría */
+  height: 120px;                        /* Establece un alto fijo de 120px para la imagen de la categoría */
+  object-fit: cover;                    /* Escala y recorta la imagen para cubrir el contenedor (120x120px) sin perder su proporción original ni deformarse */
+  border-radius: 50%;                   /* Convierte el elemento en un círculo perfecto al aplicar un radio de borde del 50% (en elementos cuadrados). */
+  margin-bottom: 15px;                  /* Crea una separación inferior de 15px para distanciar la imagen del texto de la categoría */
+  box-shadow: 0 0 15px #0005;
+}
+
+.categories__item {
+  color: var(--color-text-main);
+  display: grid;                        /* Convierte el enlace en un contenedor Grid para alinear la imagen y el texto */
+  justify-items: center;                /* Alinea y centra los grid-items (imagen y span) horizontalmente dentro de la tarjeta */
+  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
+  
+  /* Prepara una animación suave para cualquier cambio en la propiedad 'transform'. 
+    La transición durará 0.3 segundos con una curva de velocidad suave (ease). */
+  transition: transform 0.3s ease;
+}
+
+.categories__item:hover {
+  /* Al pasar el mouse, desplaza el elemento 5px hacia arriba en el eje vertical (Y). 
+    Gracias a la 'transition' del padre, este movimiento se ve como una levitación suave. */
+  transform: translateY(-5px);
+}
+
+/* ---------- HOME ENDS ---------- */
+
+/* ---------- PRODUCT SECTION (Mobile) ---------- */
+.products{
+  padding: 20px 40px 20px;              /* Genera un espacio interno para evitar que las tarjetas toquen los bordes de la pantalla */
+}
+
+.products__section{
+  margin-bottom: 35px;                  /* Define un margen inferior para separar con claridad las distintas categorías de productos */
+}
+
+.products__title { 
+  color: var(--color-text-main);         
+  font-size: 1.8rem;                    /* Tamaño de fuente relativo (1.8 * 16px del navegador = 28.8px) */
+  text-align: center;                   /* Posiciona el texto en el centro del eje horizontal del contenedor */
+  padding: 10px 0 25px;                 /* Espaciado interno superior e inferior para dar aire al título */
+  margin: 0;                            /* Elimina los márgenes externos predeterminados del elemento h2 */
+}
+
+.products__grid{
+  display: grid;                        /* Habilita el modelo de layout de rejilla (Grid) */
+  grid-template-columns: repeat(auto-fit, 280px);     /* 'auto-fit' ajusta el número de columnas al ancho disponible; cada una con un ancho fijo de 280px */
+  max-width: 1400px;                    /* Limita el ancho total de la grilla para mantener la estética en monitores ultra-wide */
+  margin: 0 auto 40px;                  /* Centra el bloque .products__grid horizontalmente dentro de su elemento padre (.products) */
+  align-items: stretch;                 /* Fuerza a que todos los elementos de una fila tengan la misma altura, estirando los fondos */
+  justify-content: center;              /* Distribuye las columnas centradas si el ancho total de estas es menor al max-width */
+  gap: 20px;                            /* Establece una separación de 20px entre las tarjetas (grid-items) */
+}
+
+.card{
+  background-color: var(--color-surface);
+  box-shadow: 2px 2px 10px #0005;     /* Sombra: 2px horizontal, 2px vertical, 10px de desenfoque y color negro con 31% de opacidad (#0005) */
+  border-radius: 15px;                  /* Redondea las esquinas de la card */
+  overflow: hidden;                     /* Recorta cualquier contenido hijo (como la imagen) que intente sobresalir de las esquinas redondeadas */
+
+  display: flex;                        /* Activa el modelo de caja flexible para organizar la imagen y el contenido en un solo eje */
+  flex-direction: column;               /* Alinea los elementos uno debajo del otro de forma vertical */
+  
+  height: 100%;                         /* Asegura que la tarjeta ocupe el 100% de la altura de su celda en la grilla */
+}
+
+.card__img{
+  width: 100%;                          /* Asegura que la imagen tome todo el ancho de la tarjeta */
+  height: 200px;                        /* Altura fija para normalizar el tamaño de las tarjetas independientemente de la foto original */
+  object-fit: cover;                    /* Escala y recorta la imagen para cubrir el contenedor sin perder su relación de aspecto */
+}
+
+.card__content {
+  padding: 10px 20px 20px;              /* Establece un padding superior de 10px, lateral de 20px e inferior de 20px */
+  text-align: center;                   /* Hereda la alineación centrada a todos los elementos de texto dentro de la tarjeta */
+
+  display: flex;                        /* Activa el modelo de caja flexible para organizar el contenido en un solo eje */
+  flex-direction: column;               /* Alinea los elementos uno debajo del otro de forma vertical */
+  gap: 15px;                            /* Establece un espaciado uniforme entre cada componente de la tarjeta */
+
+  flex-grow: 1;                         /* Permite que el bloque de texto se expanda para absorber el espacio vacío de la tarjeta */
+}
+
+.card__title {
+  color: var(--color-text-main);
+  font-size: 1.4rem;                    /* Tamaño de fuente relativo (1.4 * 16px del navegador = 22.4px) */
+}
+
+.card__description {
+  font-size: 0.95rem;                   /* Tamaño de fuente relativo (0.95 * 16px del navegador = 15.2px) */
+  line-height: 1.4;                     /* Define la distancia entre líneas de texto para mejorar la legibilidad del párrafo */
+}
+
+.card__price {
+  color: var(--color-primary);
+  padding-top: 15px;                    /* Espaciado interno superior para separar el precio del párrafo descriptivo */
+  margin-top: auto;                     /* Absorbe el margen superior disponible para empujar el precio y el botón al final de la tarjeta */
+  font-size: 1.6rem;                    /* Tamaño de fuente relativo (1.6 * 16px del navegador = 25.6px) */
+  font-weight: 700;                     /* Define el peso de la fuente en negrita (Bold) para destacar el valor comercial */
+}
+
+.card__btn {
+  background-color: var(--color-primary-variant);
+  color: var(--color-surface);
+  box-shadow: 0 0 10px #0005;         /* Sombra: 0 horizontal, 0 vertical, 10px de desenfoque y color negro con 31% de opacidad (#0005) */
+  font-weight: 600;                     /* Agrega mas peso a la fuente del botón */ 
+  width: 100%;                          /* Ocupará el 100% del ancho de su elemento contenedor */
+  padding: 12px;                        /* Agregá un padding superior e inferior (el lateral no lo tendrá en cuenta gracias al width: 100%) */
+  border: none;                         /* Quita el borde que el navegador coloca por defecto */
+  border-radius: 8px;                   /* Redondea las esquinas del boton para darle mayor suavidad */
+  cursor: pointer;                      /* Cambia el cursor a la "manito" para indicar que el elemento es interactivo */
+}
+
+/* ---------- PRODUCT ENDS ---------- */
+
+/* ---------- ABOUT SECTION (Mobile) ---------- */
+.about__wrapper{
+  max-width: 1400px;                    /* Limita la expansión horizontal para mantener la estética en pantallas grandes */
+  min-width: 250px;                     /* Asegura un ancho mínimo para evitar que el contenedor se colapse en pantallas muy pequeñas */
+
+  display: flex;                        /* Activamos Flexbox en el contenedor principal */
+  flex-direction: column;               /* Colocamos los flex-items en forma vertical */
+  justify-content: center;              /* Alinea y centra los flex-items verticalmente dentro del contenedor */
+  align-items: center;                  /* Alinea y centra los flex-items horizontalmente dentro del contenedor */
+  padding: 20px;                        /* Crea un espacio uniforme de 20px superior/inferior y 15px lateral para separar el contenido de los bordes */
+  gap: 25px;                            /* Define una separación uniforme y controlada de 25px entre los elementos hijos en el eje vertical */
+  margin: 20px auto 40px;               /* Centra el bloque .about__wrapper horizontalmente dentro de su elemento padre */
+}
+
+.about__img-container{
+  max-height: 500px;                    /* Limita la altura máxima de la imagen para evitar que se desborde en pantallas pequeñas */
+  border-radius: 8px;                   /* Aplica un radio de borde de 8px para suavizar las esquinas del contenedor */
+  overflow: hidden;                     /* Oculta cualquier contenido que se desborde del contenedor */
+}
+
+.about__img{
+  width: 720px;                         /* Establece un ancho fijo de 720px para la imagen */
+  max-width: 100%;                      /* Permite que la imagen se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__img-container) en pantallas menores al max-width (Mobile) */
+
+  border-radius: 8px;                   /* Aplica un radio de borde de 8px para suavizar las esquinas de la imagen */
+  overflow: hidden;                     /* Oculta cualquier contenido que se desborde de la imagen */
+}
+
+.about__data{
+  max-width: 100%;                      /* Permite que el contenedor se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__wrapper) en pantallas menores al max-width (Mobile) */
+  margin: auto;                         /* Centra el bloque .about__data horizontalmente dentro de su elemento padre */
+}
+
+.about__content{
+  width: 720px;                         /* Establece un ancho fijo de 720px para el contenido de texto */
+  max-width: 100%;                      /* Permite que el contenido se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__data) en pantallas menores al max-width (Mobile) */
+}
+
+.about__title{
+  text-wrap: balance;                   /* Balancea el ancho de las líneas para evitar que queden palabras sueltas (huérfanas) al final, logrando un título simétrico y armónico */
+  text-align: center;                   /* Alinea el texto del título al centro del ancho del contenedor */
+}
+
+.about__description{
+  margin: 15px 0;                       /* Crea una separación uniforme de 15px superior/inferior y 0px lateral para separar los párrafos de texto */
+  text-wrap: pretty;                    /* Optimiza el salto de línea para evitar que la última palabra del párrafo quede sola en una línea (viuda), mejorando la prolijidad visual. */
+}
+
+/* ---------- ABOUT ENDS ---------- */
+
+/* ---------- CONTACT SECTION (Mobile) ---------- */
+.contact{
+  padding: 25px 30px 0;                 /* Genera un espacio interno superior de 25px y lateral de 30px (0 inferior) para separar el contenido de los bordes del dispositivo */
+  display: flex;                        /* Activa el modelo de caja flexible para el control UNIDIMENSIONAL de la disposición de los hijos (en este caso, en columna). */
+  flex-direction: column;               /* Establece la dirección del eje principal en columna, apilando los elementos verticalmente */
+  justify-content: center;              /* Alinea y centra los elementos hijos (.contact__title, formulario, etc.) en el eje principal (vertical) */
+  align-items: center;                  /* Alinea y centra los elementos hijos en el eje transversal (horizontal) */
+}
+
+.contact__title{
+  font-size: 2.4rem;                    /* Tamaño de fuente relativo (2.4 * 16px del navegador = 38.4px) */
+  text-align: center;                   /* Alinea el texto al centro (Aunque ya lo haga flex con su propiedad align-items, esta propiedad sirve para textos largos) */
+  padding-bottom: 20px;                 /* Genera un espacio interno inferior de 20px para separar el titulo del formulario */
+}
+
+.contact__form{
+  max-width: 600px;                     /* Limita la expansión horizontal para mantener la estética y legibilidad en monitores anchos (Desktop). */
+  width: 100%;                          /* Permite que el formulario se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.contact) en pantallas menores al max-width (Mobile). */
+  
+  padding: 12px;                        /* Genera un espacio interno uniforme de 12px entre los bordes del formulario y su contenido (los fieldset y boton). */
+  margin-bottom: 30px;                  /* Crea una separación inferior de 30px para distanciar el formulario del comienzo del footer de la página. */
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;                            /* Define una separación uniforme, centralizada y controlada de 15px entre los elementos hijos principales (fieldsets y el botón submit) en el eje vertical. */
+}
+
+.contact__form fieldset{
+  border-radius: 10px;                  /* Aplica un radio de borde de 10px para suavizar las esquinas del fieldset, integrando la estética moderna y amable de la marca Kámba en el formulario. */
+  padding: 20px;                        /* Define un espacio interno uniforme de 20px (padding) entre los bordes del fieldset y su contenido (los inputs). */
+}
+
+.contact__input-container :is(input, textarea, select, button){ /* Aplica los estilos de forma agrupada a los inputs, textarea, select y button hijos de .contact__input-container */
+  width: 100%;                          /* Permite que todos los elementos de formulario ocupen el 100% del ancho disponible de su contenedor */
+  padding: 9px;                         /* Crea un espacio uniforme de 9px (padding) entre los bordes del input y su contenido de texto */
+  font-size: 1rem;                      /* Tamaño de fuente relativo (1 * 16px del navegador = 16px) */
+  box-shadow: 2px 2px 4px #0003;      /* Aplica una sombra suave y uniforme (4px de desenfoque) para generar profundidad (elevación) sobre el fondo crema */
+  border: none;                         /* Elimina el borde estético que los navegadores añaden por defecto a los elementos de formulario */
+  margin: 15px 0 15px;                  /* Crea un espacio de 15px en la parte superior e inferior para separar visualmente los inputs entre sí */
+  border-radius: 5px;                   /* Aplica un radio de borde de 5px para suavizar las esquinas de los inputs y botones */
+}
+
+.contact__input-container textarea{
+  resize: none;                         /* Desactiva la capacidad predeterminada del navegador que permite al usuario redimensionar manualmente el cuadro de texto con el mouse */
+  min-height: 120px;                    /* Define una altura mínima de 120px para el área de texto */
+  font-family: inherit;                 /* Fuerza al textarea a heredar la familia de fuente definida en sus elementos antecesores (como el 'body') */
+}
+
+.contact__input-container :is(input, textarea, select):focus {
+  outline: 2px solid var(--color-primary);        /* Reemplaza el naranja por defecto por el magenta de la marca */
+}
+
+.contact__input-container button{
+  background-color: var(--color-primary-variant);
+  color: var(--color-surface);
+  padding: 12px;                        /* Crea un espacio uniforme de 12px (padding) entre los bordes del botón y su contenido de texto (será visible arriba y abajo ya que a los laterales se encarga el width: 100% definido antes) */
+  cursor: pointer;                      /* Cambia el cursor predeterminado del navegador por una mano (pointer) al pasar el mouse sobre el botón, indicando que se trata de un elemento interactivo y seleccionable */
+}
+
+/* ---------- CONTACT ENDS ---------- */
+
+/* ---------- FOOTER SECTION (Mobile) ---------- */
+.footer{
+  background-color: var(--color-text-main);
+  color: var(--color-bg);
+
+  padding: 30px 15px;                   /* Crea un espacio uniforme de 30px superior/inferior y 15px lateral para separar el contenido de los bordes */
+  text-align: center;                   /* Alinea el texto de los flex-items (como los títulos de redes) al centro del ancho del contenedor */
+}
+
+.footer__container{
+  display: grid;                        /* Activa grid. Es la forma más robusta de controlar el espaciado (gap) en diseños de una sola columna apilada */
+  gap: 25px;                            /* Define una separación uniforme, centralizada y controlada de 25px entre los elementos hijos (redes, copyright) en el eje vertical */
+}
+
+.footer__title{
+  margin-bottom: 15px;                  /* Crea una separación inferior de 15px para distanciar el título del contenido de la columna */
+  font-size: 1.2em;                     /* Tamaño de fuente relativo (1.2 * 16px del navegador = 19.2px) */
+}
+
+.footer__list{
+  list-style: none;                     /* Elimina los marcadores o viñetas predeterminadas de la lista (puntos) */
+}
+
+.footer__list-item{
+  margin-bottom: 10px;                  /* Añade un margen inferior de 10px a cada list-item para separar visualmente los elementos de la lista */
+}
+
+.footer__list-item a{
+  color: var(--color-bg);
+  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
+
+  /* Prepara una animación suave para cualquier cambio en la propiedad 'color'. La transición durará 0.3 segundos con una curva de velocidad suave (ease). */
+  transition: color .3s ease;
+}
+
+.footer__list-item a:hover{
+  /* Al pasar el mouse, cambia el color del texto al color variante principal. Gracias a la 'transition' del padre, este cambio se ve como un desvanecimiento suave. */
+  color: var(--color-primary-variant);
+}
+
+.footer__list--social{
+  display: flex;                        /* Activa el contexto de flex ya que es la forma más robusta de controlar la alineación y el espaciado (gap) en diseños de una sola fila */
+  justify-content: center;              /* Alinea y centra los flex-items (los iconos de redes) horizontalmente dentro del contenedor */
+  gap: 22px;                            /* Define una separación uniforme, centralizada y controlada de 22px entre los flex-items (iconos) */
+}
+
+/* ---------- FOOTER ENDS ---------- */
+
+.whatsapp-btn {
+  position: fixed;                      /* Posiciona el elemento respecto a la ventana del navegador (viewport), no al documento */  
+  bottom: 30px;                         /* Lo ubica a 20px del borde inferior de la pantalla */
+  right: 30px;                          /* Lo ubica a 20px del borde derecho de la pantalla */
+  z-index: 100;                         /* Asegura que el logo flote por encima de cualquier otro elemento (como el header o secciones) */
+}
+
+.whatsapp-btn img {
+  width: 60px;
+  transition: scale .25s ease;
+}
+
+.whatsapp-btn:hover img {
+  scale: 1.2;                /* Efecto de crecimiento suave */
+}
+
+/* -------------------------------------------------- */
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Rangos Recomendados para Media Queries (CSS):
+
+Móviles (Portrait): (max-width: 575px) - Estilos para teléfonos pequeños y medianos.
+Móviles (Landscape) / Tablets: (min-width: 576px) - Tabletas en vertical y móviles grandes.
+Tablets (Landscape) / Laptops: (min-width: 768px) - Tablets en horizontal y portátiles pequeñas.
+Escritorio: (min-width: 992px) - Escritorios estándar.
+Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
+*/
+
+@media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas */
+
+  /* ---------- HEADER SECTION ---------- */
+  .header__open-nav-button{ display: none; }      /* Oculta el botón hamburguesa al llegar a resoluciones a partir de 768px */
+
+  .header__nav{
+    display: flex;                      /* Reactiva la visibilidad del menú que en mobile estaba oculto (display: none) */
+    position: static;                   /* Anula el position: absolute; permitiendo que el nav ocupe su lugar natural en el layout del header */
+    height: auto;                       /* Permite que el contenedor se ajuste al tamaño de la lista de enlaces y no a la pantalla */
+    width: auto;                        /* Permite que el contenedor se ajuste al tamaño de la lista de enlaces y no a la pantalla */
+  }
+
+  .header__nav-list{
+    flex-direction: row;                /* Cambia la disposición de los enlaces de vertical (columna) a horizontal (fila) */
+    gap: 20px;                          /* Define un espacio constante entre los enlaces sin usar márgenes individuales */
+    height: auto;                       /* Resetea la altura fija (40vh) usada en mobile */
+    margin-right: 20px;                 /* Separa el bloque de navegación del borde derecho del header */
+  }
+
+  /* ---------- HEADER ENDS ---------- */
+
+  /* ---------- CONTACT SECTION ---------- */
+  .contact__form fieldset{
+    display: grid;                      /* Activa display: grid en todos los fieldset */
+    gap: 12px;                          /* Define una separación uniforme de 12px entre los inputs */
+  }
+
+  .contact__form fieldset:first-child{
+    grid-template-areas:                /* Define las áreas de la grilla para reconfigurar el diseño a dos columnas */
+    "name lastname"
+    "email phone-number";
+    gap: inherit;                       /* Hereda el gap de 15px del elemento padre (.contact__form) */
+  }
+
+  /* Nombrado de áreas para poder hacer uso de la propiedad 'grid-template-areas' definida en el elemento padre (:first-child). 
+    Requiere que estos selectores tengan especificidad para asegurar que las áreas se asignen correctamente. */
+  .contact__input-container:nth-child(2){ grid-area: name; }
+  .contact__input-container:nth-child(3){ grid-area: lastname; }
+  .contact__input-container:nth-child(4){ grid-area: email; }
+  .contact__input-container:nth-child(5){ grid-area: phone-number; }
+
+  /* Reconfigura el segundo fieldset (Información Adicional) para que use Flexbox en columna (Anula el display: grid del selector general) */
+  .contact__form fieldset:last-of-type{
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- CONTACT ENDS ---------- */
+
+  /* ---------- FOOTER SECTION ---------- */
+  .footer__container{
+    display: flex;
+    justify-content: space-around;      /* Alinea y distribuye los flex-items (redes, copyright) con espacios uniformes entre y alrededor */
+    text-align: left;                   /* Alinea el texto de los flex-items (como los títulos de redes) a la izquierda */
+    margin: auto;                       /* Centra el bloque .footer__container horizontalmente dentro de su elemento padre */
+    max-width: 1300px;                  /* Limita la expansión horizontal para mantener la estética en pantallas grandes */
+  }
+
+  /* ---------- FOOTER ENDS ---------- */
+}
+
+@media (min-width: 992px) { /* Escritorios estándar */
+
+  /* ---------- ABOUT SECTION ---------- */
+  .about__wrapper{
+    flex-direction: row-reverse;        /* Invierte el orden de los flex-items (imagen y texto) para que la imagen quede a la izquierda y el texto a la derecha */
+    justify-content: space-around;      /* Alinea y distribuye los flex-items con espacios uniformes entre y alrededor */        
+    margin: auto;                       /* Centra el bloque .about__wrapper horizontalmente dentro de su elemento padre */
+    gap: 30px;                          /* ¡CLAVE PRO! Define una separación uniforme y controlada de 30px entre la imagen y el bloque de texto */
+  }
+
+  .about__img-container{
+    margin: 70px auto;                  /* Crea una separación uniforme de 70px superior/inferior para distanciar la imagen del contenido */
+  }
+
+  .about__img{
+    width: 600px;                       /* Establece un ancho fijo de 600px para la imagen en pantallas grandes */
+  }
+
+  .about__content{
+    width: 400px;                       /* Establece un ancho fijo de 400px para el contenido de texto en pantallas grandes */
+    max-width: 100%;                    /* Permite que el contenido se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__data) en pantallas menores al width (Mobile) */
+  }
+
+  /* ---------- ABOUT ENDS ---------- */
+}
+
+/* ---------- MEDIA QUERIES END ---------- */

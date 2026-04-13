@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamba - Contacto</title>
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://kit.fontawesome.com/1afc4e6b25.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    
+    <!-- HEADER -->
+    <header class="header">
+
+      <!-- Técnica para menú desplegable 'The Checkbox Hack' -->
+      <input class="header__checkbox" type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="header__open-nav-button" role="button">≡</label>
+
+      <div class="header__logo-container">
+        <a href="../index.html">
+          <img class="header__logo" src="../assets/logo.png" alt="Logo de Kámba">
+        </a>
+      </div>
+      
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="./arte_y_pintura.html">Árte y Pintura</a></li>
+          <li class="header__nav-item"><a href="./costura_creativa.html">Costura Creativa</a></li>
+          <li class="header__nav-item"><a href="./sobre_kamba.html">Sobre Kámba</a></li>
+          <li class="header__nav-item header__nav-item--active"><a href="./contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="contact">
+        <h2 class="contact__title">Envianos tu consulta</h2>
+        <form class="contact__form" method="get" action="#"> <!-- Debe ser POST -->
+
+
+          <fieldset>
+            <legend>Información personal</legend>
+
+            <div class="contact__input-container">
+              <label for="name">Nombre:
+                <input type="text" id="name" name="name" placeholder="Ej: Juán" required>
+              </label>
+            </div>
+
+            <div class="contact__input-container">
+              <label for="lastname">Apellido:
+                <input type="text" id="lastname" name="lastname" placeholder="Ej: Perez" required>
+              </label>
+            </div>
+            
+            <div class="contact__input-container">
+              <label for="email">Correo electrónico:
+                <input type="email" name="email" id="email" placeholder="Ej: correo@mail.com" required>
+              </label>
+            </div>
+
+            <div class="contact__input-container">
+              <label for="phone-number">Teléfono <span>(Opcional)</span>:
+                <input type="tel" name="phone-number" id="phone-number" placeholder="+0 1234 567891">
+              </label>
+            </div>
+          </fieldset>
+        
+          <fieldset>
+            <legend>Información adicional</legend>
+
+            <div class="contact__input-container">
+              <label for="product-type">Tipo de producto:
+                <select name="product-type" id="product-type" required>
+                  <option value="" disabled selected>Selecciona una opción</option>
+                  <option value="macetas">Macetas</option>
+                  <option value="cuadros">Cuadros</option>
+                  <option value="textil">Textil</option>
+                </select>
+              </label>
+            </div>
+            
+            <div class="contact__input-container">
+              <label for="message">Tu consulta:
+                <textarea name="message" id="message" cols="30" rows="5" placeholder="Contanos qué necesitas..." required></textarea>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="contact__input-container">
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+    </main>
+
+    <footer class="footer">
+
+      <div class="footer__container">
+        <div class="footer__column">
+          <h3 class="footer__title">Contacto</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item">Email: <a href="mailto:aime.conca@gmail.com">aime.conca@gmail.com</a></li>
+            <li class="footer__list-item">Telefono: <a href="tel:+54 9 2664 57-1767">+54 9 2664 57-1767</a></li>
+            <li class="footer__list-item">Dirección: Ciudad de San Luis</li>
+          </ul>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__title">Enlaces
+          </h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="../index.html">Inicio</a></li>
+            <li class="footer__list-item"><a href="./arte_y_pintura.html">Árte y Pintura</a></li>
+            <li class="footer__list-item"><a href="./costura_creativa.html">Costura Creativa</a></li>
+            <li class="footer__list-item"><a href="./sobre_kamba.html">Sobre Kámba</a></li>
+            <li class="footer__list-item"><a href="./contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__title">Siguenos</h3>
+          <ul class="footer__list footer__list--social">
+            <li class="footer__list-item">
+              <a href="https://www.instagram.com/kamba.arte/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li class="footer__list-item">
+              <a href="https://www.facebook.com/aime.gabelli/" target="_blank">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </footer>
+
+    <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=542664571767&text=Hola!%20Estoy%20interesado...">
+      <img src="../assets/whatsapp.png" alt="WhatsApp de Kámba">
+    </a>
+  </body>
+</html>

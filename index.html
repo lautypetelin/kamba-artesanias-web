@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamba - Inicio</title>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://kit.fontawesome.com/1afc4e6b25.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+      <!-- Técnica para menú desplegable 'The Checkbox Hack' -->
+      <input class="header__checkbox" type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="header__open-nav-button" role="button">≡</label>
+
+      <div class="header__logo-container">
+        <a href="./index.html">
+          <img class="header__logo" src="./assets/logo.png" alt="Logo de Kámba">
+        </a>
+      </div>
+      
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item" ><a href="./pages/arte_y_pintura.html">Árte y Pintura</a></li>
+          <li class="header__nav-item" ><a href="./pages/costura_creativa.html">Costura Creativa</a></li>
+          <li class="header__nav-item" ><a href="./pages/sobre_kamba.html">Sobre Kámba</a></li>
+          <li class="header__nav-item" ><a href="./pages/contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="hero__content">
+          <h1 class="hero__title">Arte y Costura con alma</h1>
+          <p class="hero__subtitle">Piezas únicas pintadas a mano y creadas con amor en San Luis.</p>
+          <a href="./pages/arte_y_pintura.html" class="hero__btn">Ver Catálogo</a>
+        </div>
+      </section>
+
+      <section class="categories">
+        <h2 class="categories__title">Explorá nuestro mundo</h2>
+        <div class="categories__grid">
+          <a href="./pages/arte_y_pintura.html" class="categories__item">
+            <img src="https://picsum.photos/51/50" alt="Macetas">
+            <span>Arte y Pintura</span>
+          </a>
+          <a href="./pages/costura_creativa.html" class="categories__item">
+            <img src="https://picsum.photos/50/51" alt="Costura">
+            <span>Costura Creativa</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="products">
+        <h2 class="products__title">Lo más pedido</h2>
+        <div class="products__grid">
+
+          <article class="card">
+            <img class="card__img" src="https://picsum.photos/500/250" alt="Maceta grande">
+            <div class="card__content">
+              <h3 class="card__title">Maceta grande</h3>
+              <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
+              <span class="card__price">$8.600</span>
+              <button class="card__btn">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card__img" src="https://picsum.photos/500/251" alt="Cartuchera">
+            <div class="card__content">
+              <h3 class="card__title">Cartuchera</h3>
+              <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
+              <span class="card__price">$3.200</span>
+              <button class="card__btn">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card__img" src="https://picsum.photos/500/252" alt="cuadro mediano">
+            <div class="card__content">
+              <h3 class="card__title">Cuadro mediano</h3>
+              <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
+              <span class="card__price">$6.000</span>
+              <button class="card__btn">Agregar al carrito</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+
+      <div class="footer__container">
+        <div class="footer__column">
+          <h3 class="footer__title">Contacto</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item">Email: <a href="mailto:aime.conca@gmail.com">aime.conca@gmail.com</a></li>
+            <li class="footer__list-item">Telefono: <a href="tel:+54 9 2664 57-1767">+54 9 2664 57-1767</a></li>
+            <li class="footer__list-item">Dirección: Ciudad de San Luis</li>
+          </ul>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__title">Enlaces</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="./index.html">Inicio</a></li>
+            <li class="footer__list-item"><a href="./pages/arte_y_pintura.html">Árte y Pintura</a></li>
+            <li class="footer__list-item"><a href="./pages/costura_creativa.html">Costura Creativa</a></li>
+            <li class="footer__list-item"><a href="./pages/sobre_kamba.html">Sobre Kámba</a></li>
+            <li class="footer__list-item"><a href="./pages/contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__title">Siguenos</h3>
+          <ul class="footer__list footer__list--social">
+            <li class="footer__list-item">
+              <a href="https://www.instagram.com/kamba.arte/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li class="footer__list-item">
+              <a href="https://www.facebook.com/aime.gabelli/" target="_blank">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </footer>
+
+    <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=542664571767&text=Hola!%20Estoy%20interesado...">
+      <img src="../assets/whatsapp.png" alt="WhatsApp de Kámba">
+    </a>
+
+  </body>
+</html>
