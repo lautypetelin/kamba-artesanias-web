@@ -35,97 +35,81 @@ main{
 /* ---------- HEADER SECTION (Mobile) ---------- */
 .header{
   background-color: var(--color-primary);
-  display: flex;
-  justify-content: space-between;       /* Distribuye el espacio sobrante entre los elementos (Logo y Botón) empujándolos a los extremos */
-  align-items: center;                  /* Alinea los elementos hijos en el eje transversal (vertical) al centro */
+  box-shadow: 0 0 5px #0003;          /* Sombra sutil: 0 desplazamiento, 5px de desenfoque y color negro con 20% de opacidad */
 
   position: sticky;                     /* Fija el elemento al scroll pero respetando su espacio original en el flujo del documento */
-  top: 0;                               /* Define el punto de anclaje para el sticky (borde superior) */
+  top: 0px;                             /* Define el punto de anclaje para el sticky (borde superior) */
   text-align: center;                   /* Hereda la alineación centrada a los elementos de texto internos */
-  font-size: 1.25rem;                   /* Tamaño de fuente relativo (1.25 * 16px del navegador = 20px) */
-  box-shadow: 0 0 5px #0003;          /* Sombra sutil: 0 desplazamiento, 5px de desenfoque y color negro con 20% de opacidad */
-  z-index: 10;                          /* Establece el orden en el eje Z; valores más altos quedan "al frente" */
+  padding: 10px 20px;                   /* Define el espacio que habra entre el borde y los elementos del header */
+  
+  z-index: 10;                           /* Asegura que el header se posicione por encima de otros elementos en el eje Z. */
+  min-width: 230px;                     /* Establece un ancho mínimo para prevenir que el diseño se rompa en dispositivos extremadamente pequeños. */
 }
 
-/* The Checkbox Hack */
-  .header__checkbox{ display: none; }   /* Oculta el elemento visualmente y lo quita del flujo, pero sigue siendo funcional para el label */
+.header__nav{
+  max-width: 1440px;
+}
 
-  .header__open-nav-button{
-    color: var(--color-bg);
-    font-size: 3rem;                    /* Tamaño de fuente relativo (3 * 16px del navegador = 48px) */
-    font-weight: 600;                   /* Define el peso (grosor) de la fuente (Semi-bold) */
-    cursor: pointer;                    /* Cambia el cursor a la "manito" para indicar que el elemento es interactivo */
-
-    position: absolute;                 /* Posicionamiento relativo al ancestro posicionado más cercano (en este caso, .header) */
-    right: 20px;                        /* Desplaza el elemento 20px hacia la izquierda desde el borde derecho de su contenedor padre */
-    
-    transition: scale 0.2s ease;
-  }
-
-  .header__open-nav-button:hover{
-    scale: 1.12
-  }
-
-  /* ---------- ○ ---------- */
-
-  .header__nav{
-    display: none;                      /* Oculta el elemento y lo elimina del flujo del documento (Se hará visible con display: flex gracias al checkbox) */
-    background-color: inherit;          /* Toma el color de fondo de su contenedor padre (.header) */
-    width: 100%;                        /* Se extiende a lo ancho de su contenedor posicionado */
-    height: 100vh;                      /* Define una altura fija equivalente al 100% del alto de la ventana (Viewport Height) */
-
-    position: absolute;                 /* Lo posiciona de forma absoluta respecto al ancestro posicionado (.header) */
-    top: 0;                             /* Lo ubica exactamente en el borde superior de su ancestro de referencia */
-    z-index: -1;                        /* Lo desplaza hacia atrás en el eje Z para que el logo y el botón queden por encima */
-  }
-
-  .header__checkbox:checked ~ .header__nav{       /* Selector de hermano general (~) - Selecciona todos los hermanos que le siguen */
-    display: flex;                                /* Cuando el checkbox está activo, cambia el estado de visualización a Flexbox */
-  }
-/* -------------------------------------------------------------------- */
+.header__logo-container .navbar-brand{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 0 5px;
+}
 
 .header__logo{
-  width: 64px;                          /* Establece un ancho fijo para la imagen del logo */
-  max-width: 100%;                      /* Restringe el ancho de la imagen para que nunca supere el ancho disponible de su contenedor (.header__logo-container) */
-  margin: 10px 20px;                    /* Crea un espacio exterior de 10px arriba/abajo y 20px a los lados para separar el logo del borde del header */
+  width: 64px;                          /* Define un ancho fijo de 64px para el logotipo de la marca. */
+  max-width: 100%;                      /* Restringe el ancho para que la imagen sea fluida y no desborde su contenedor. */
 
-  filter: drop-shadow(0 0 5px var(--color-text-main));  /* Aplica una sombra proyectada que sigue el contorno real de los píxeles (ideal para logos transparentes PNG) */
-  transition: filter 0.2s ease, scale 0.2s ease;
+  filter: drop-shadow(0 0 5px var(--color-text-main));  /* Genera una sombra que sigue el contorno real de los píxeles del logo (ideal para archivos PNG). */
+  transition: filter 0.2s ease, transform 0.2s ease;    /* Suaviza la transición del filtro y la escala durante 0.2 segundos. */
 }
 
 .header__logo:hover{
-  filter: drop-shadow(0 0 5px var(--color-active));
-  scale: 1.05;
+  filter: drop-shadow(0 0 5px var(--color-active));     /* Cambia el color de la sombra proyectada al color de estado activo de la marca. */
+  transform: scale(1.10);                                         /* Aumenta el tamaño del logo un 10% mediante una transformación de escala. */
 }
 
+.header__open-nav-button{
+  color: var(--color-bg);
+  border: 2px solid var(--color-bg);
+  font-size: 1.2rem;                    /* Tamaño de fuente relativo (1.5 * 16px del navegador = 24px) */
+  transition: transform 0.2s ease;
+}
+
+.header__open-nav-button:hover{
+  scale: 1.12;                          /* Aumenta el tamaño del botón un 12% al pasar el cursor para dar feedback de interactividad. */
+}
+
+.header__open-nav-button:focus{
+  box-shadow: none;                     /* Elimina la sombra de enfoque predeterminada de Bootstrap para una estética más limpia. */
+  outline: 2px solid var(--color-bg);
+  outline-offset: 2px;
+}
+
+.navbar-toggler-icon{
+  filter: brightness(0) invert(1);      /* Invierte los colores del icono de Bootstrap para que sea visible (blanco) sobre el fondo oscuro. */
+}
 .header__nav-list{
-  list-style: none;                     /* Elimina los marcadores o viñetas predeterminadas de la lista (puntos) */
-  height: 40vh;                         /* Establece una altura relativa al 40% de la altura total de la pantalla (Viewport Height) */
-  margin: auto;                         /* Centra el bloque de la lista tanto horizontal como verticalmente al absorber el espacio sobrante dentro del nav (Gracias a la línea 78) */
-
-  display: flex;                        /* Activa el modelo de caja flexible para controlar la disposición de los enlaces */
-  flex-direction: column;               /* Cambia la dirección del eje principal a vertical (los links se apilan uno abajo del otro) */
-  justify-content: space-evenly;        /* Distribuye los elementos de forma equitativa, dejando el mismo espacio entre ellos y hacia los bordes */
+  gap: 15px;                            /* Define un espaciado constante de 15px entre los elementos de la lista de navegación (links). */
 }
 
-.header__nav-item a{
-  color: var(--color-bg);               /* Usa el tono crema para resaltar sobre el fondo magenta del menú */
-  text-decoration: none;                /* Elimina la decoración de subrayado predeterminada del navegador */
-  
-  display: inline-block;
-  transition: scale 0.2s ease;
+.header__nav-list .nav-link{
+  color: var(--color-bg);
+  transition: transform 0.2s ease, color 0.2s ease;          /* Prepara la animación de escalado para los enlaces del menú. */
 }
 
-.header__nav-item--active{              
-  color: var(--color-active);           /* Color distintivo (blanco) para indicar visualmente la ubicación actual del usuario */
-  font-weight: bold;                    /* Refuerza la jerarquía visual del enlace activo */
+.header__nav-list .nav-link.active{              
+  color: var(--color-active);           /* Refuerza la jerarquía visual del enlace activo */
+  font-weight: 700;                    
 }
 
-.header__nav-item a:is(:hover, :active){          /* Pseudo-clase funcional :is() para agrupar estados de interacción */
+.header__nav-item .nav-link:is(:hover, :focus){        /* Pseudo-clase funcional :is() para agrupar estados de interacción */
   
   /* Proporciona feedback visual de interactividad mediante cambio de color y cambio de escala */
   color: var(--color-active);
-  scale: 1.1;
+  transform: scale(1.05);
+  outline: none;
 }
 
 /* ---------- HEADER ENDS ---------- */
@@ -495,20 +479,12 @@ Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
 @media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas */
 
   /* ---------- HEADER SECTION ---------- */
-  .header__open-nav-button{ display: none; }      /* Oculta el botón hamburguesa al llegar a resoluciones a partir de 768px */
-
-  .header__nav{
-    display: flex;                      /* Reactiva la visibilidad del menú que en mobile estaba oculto (display: none) */
-    position: static;                   /* Anula el position: absolute; permitiendo que el nav ocupe su lugar natural en el layout del header */
-    height: auto;                       /* Permite que el contenedor se ajuste al tamaño de la lista de enlaces y no a la pantalla */
-    width: auto;                        /* Permite que el contenedor se ajuste al tamaño de la lista de enlaces y no a la pantalla */
-  }
 
   .header__nav-list{
-    flex-direction: row;                /* Cambia la disposición de los enlaces de vertical (columna) a horizontal (fila) */
-    gap: 20px;                          /* Define un espacio constante entre los enlaces sin usar márgenes individuales */
-    height: auto;                       /* Resetea la altura fija (40vh) usada en mobile */
-    margin-right: 20px;                 /* Separa el bloque de navegación del borde derecho del header */
+    /*flex-direction: row;                /* Cambia la disposición de los enlaces de vertical (columna) a horizontal (fila) */
+    /*gap: 20px;                          /* Define un espacio constante entre los enlaces sin usar márgenes individuales */
+    /*height: auto;                       /* Resetea la altura fija (40vh) usada en mobile */
+    /*margin-right: 20px;                 /* Separa el bloque de navegación del borde derecho del header */
   }
 
   /* ---------- HEADER ENDS ---------- */
