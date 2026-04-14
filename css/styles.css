@@ -48,6 +48,7 @@ main{
 
 .header__nav{
   max-width: 1440px;
+  margin: auto;
 }
 
 .header__logo-container .navbar-brand{
@@ -477,17 +478,6 @@ Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
 */
 
 @media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas */
-
-  /* ---------- HEADER SECTION ---------- */
-
-  .header__nav-list{
-    /*flex-direction: row;                /* Cambia la disposición de los enlaces de vertical (columna) a horizontal (fila) */
-    /*gap: 20px;                          /* Define un espacio constante entre los enlaces sin usar márgenes individuales */
-    /*height: auto;                       /* Resetea la altura fija (40vh) usada en mobile */
-    /*margin-right: 20px;                 /* Separa el bloque de navegación del borde derecho del header */
-  }
-
-  /* ---------- HEADER ENDS ---------- */
 
   /* ---------- CONTACT SECTION ---------- */
   .contact__form fieldset{
