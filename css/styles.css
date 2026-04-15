@@ -57,7 +57,7 @@ body{
 }
 
 .header__nav{
-  max-width: 1320Px;                    /* Limita el punto hasta donde se mueven los elementos del header en pantallas ultra anchas */
+  max-width: 1320px;                    /* Limita el punto hasta donde se mueven los elementos del header en pantallas ultra anchas */
   margin: auto;                         /* Centra el contenido del header (logo y links) */
 }
 
@@ -144,6 +144,85 @@ body{
 }
 
 /* ---------- HEADER ENDS ---------- */
+
+/* ---------- FOOTER SECTION (Mobile) ---------- */
+.footer{
+  background-color: var(--third-color);
+  color: var(--bg-color);
+
+  padding: 25px 0;                      /* Espaciado interno para separar el contenido de los bordes del footer */
+}
+
+.footer .container{
+  display: flex;                        /* Layout flexible para apilar secciones en vertical (móvil) */
+  flex-direction: column;
+  gap: 10px;                            /* Espaciado uniforme de 10px entre los bloques de Contacto, Enlaces y Redes */
+}
+
+.footer__column{
+  text-align: center;                   /* Centrado de todo el contenido para una mejor jerarquía visual */
+}
+
+.footer__title{
+  font-size: 1.25rem;                   /* Tamaño de fuente relativo (1.2 * 16px del navegador = 20px) */
+  margin-bottom: 15px;                  /* Margen inferior para separar el título de los datos o links */
+}
+
+.footer__list{
+  list-style: none;                     /* Elimina los marcadores o viñetas predeterminadas de la lista */
+  padding-left: 0;                      /* Elimina el padding izquierdo predeterminado de los list-item */
+
+  /* Alineación de los links en columna con un pequeño respiro de 5px */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer__list--social{
+  display: flex;                        /* Layout horizontal para los iconos de redes sociales */
+  flex-direction: row;
+  justify-content: center;              /* Centrado horizontal de los iconos */
+  gap: 20px;                            /* Espacio de 20px entre iconos para evitar clics accidentales en pantallas táctiles */
+  font-size: 1.3rem;                    /* Tamaño de los iconos de redes sociales */
+}
+
+.footer__list-item a{
+  color: var(--bg-color);
+  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
+
+  transition: color .3s ease;           /* Transición suave de 0.3s para el cambio de color al interactuar */
+}
+
+.footer__list-item a:hover{
+  color: var(--second-color);  /* Feedback visual: cambia al color magenta claro de la marca al pasar el cursor */
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@media screen and (min-width: 768px){   /* Tablets en horizontal y portátiles pequeñas (md) */
+
+  .footer .container{
+    flex-direction: row;                /* Cambia a disposición horizontal en pantallas medianas/grandes */
+    justify-content: space-around;      /* Distribuye las 3 columnas equitativamente con espacio alrededor */
+    max-width: 1320px;                  /* Limita el ancho máximo para mantener coherencia con el resto de la web */
+    margin: auto;                       /* Centra el contenedor horizontalmente */
+    margin-bottom: 15px;                /* Margen inferior de seguridad antes del copyright */
+  }
+
+  .footer__column{
+    text-align: center;                 /* Mantenemos el centrado para alinear con el copyright inferior */
+    flex: 1;                            /* Forzamos que cada columna ocupe el mismo ancho (33.3%) */
+
+    /* 
+    flex: 1 es un shorthand de:
+
+    flex-grow: 1: El elemento puede crecer.
+    flex-shrink: 1: El elemento puede encogerse si no hay espacio.
+    flex-basis: 0: El tamaño inicial del elemento antes de repartir el espacio es cero (lo que garantiza que todos se repartan el espacio por igual desde el principio).
+    */
+  }
+}
+
+/* ---------- FOOTER ENDS ---------- */
 
 /* ---------- HOME SECTION (Mobile) ---------- */
 .hero {
@@ -430,53 +509,6 @@ body{
 
 /* ---------- CONTACT ENDS ---------- */
 
-/* ---------- FOOTER SECTION (Mobile) ---------- */
-.footer{
-  background-color: var(--color-text-main);
-  color: var(--color-bg);
-
-  padding: 30px 15px;                   /* Crea un espacio uniforme de 30px superior/inferior y 15px lateral para separar el contenido de los bordes */
-  text-align: center;                   /* Alinea el texto de los flex-items (como los títulos de redes) al centro del ancho del contenedor */
-}
-
-.footer__container{
-  display: grid;                        /* Activa grid. Es la forma más robusta de controlar el espaciado (gap) en diseños de una sola columna apilada */
-  gap: 25px;                            /* Define una separación uniforme, centralizada y controlada de 25px entre los elementos hijos (redes, copyright) en el eje vertical */
-}
-
-.footer__title{
-  margin-bottom: 15px;                  /* Crea una separación inferior de 15px para distanciar el título del contenido de la columna */
-  font-size: 1.2em;                     /* Tamaño de fuente relativo (1.2 * 16px del navegador = 19.2px) */
-}
-
-.footer__list{
-  list-style: none;                     /* Elimina los marcadores o viñetas predeterminadas de la lista (puntos) */
-}
-
-.footer__list-item{
-  margin-bottom: 10px;                  /* Añade un margen inferior de 10px a cada list-item para separar visualmente los elementos de la lista */
-}
-
-.footer__list-item a{
-  color: var(--color-bg);
-  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
-
-  /* Prepara una animación suave para cualquier cambio en la propiedad 'color'. La transición durará 0.3 segundos con una curva de velocidad suave (ease). */
-  transition: color .3s ease;
-}
-
-.footer__list-item a:hover{
-  /* Al pasar el mouse, cambia el color del texto al color variante principal. Gracias a la 'transition' del padre, este cambio se ve como un desvanecimiento suave. */
-  color: var(--color-primary-variant);
-}
-
-.footer__list--social{
-  display: flex;                        /* Activa el contexto de flex ya que es la forma más robusta de controlar la alineación y el espaciado (gap) en diseños de una sola fila */
-  justify-content: center;              /* Alinea y centra los flex-items (los iconos de redes) horizontalmente dentro del contenedor */
-  gap: 22px;                            /* Define una separación uniforme, centralizada y controlada de 22px entre los flex-items (iconos) */
-}
-
-/* ---------- FOOTER ENDS ---------- */
 
 .whatsapp-btn {
   position: fixed;                      /* Posiciona el elemento respecto a la ventana del navegador (viewport), no al documento */  
@@ -499,16 +531,6 @@ body{
 /* -------------------------------------------------- */
 
 /* ---------- MEDIA QUERIES ---------- */
-
-/* Rangos Recomendados para Media Queries (CSS):
-
-Móviles (Portrait): (max-width: 575px) - Estilos para teléfonos pequeños y medianos.
-Móviles (Landscape) / Tablets: (min-width: 576px) - Tabletas en vertical y móviles grandes.
-Tablets (Landscape) / Laptops: (min-width: 768px) - Tablets en horizontal y portátiles pequeñas.
-Escritorio: (min-width: 992px) - Escritorios estándar.
-Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
-*/
-
 @media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas (md en Bootstrap) */
 
   /* ---------- CONTACT SECTION ---------- */
@@ -538,17 +560,6 @@ Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
   }
 
   /* ---------- CONTACT ENDS ---------- */
-
-  /* ---------- FOOTER SECTION ---------- */
-  .footer__container{
-    display: flex;
-    justify-content: space-around;      /* Alinea y distribuye los flex-items (redes, copyright) con espacios uniformes entre y alrededor */
-    text-align: left;                   /* Alinea el texto de los flex-items (como los títulos de redes) a la izquierda */
-    margin: auto;                       /* Centra el bloque .footer__container horizontalmente dentro de su elemento padre */
-    max-width: 1300px;                  /* Limita la expansión horizontal para mantener la estética en pantallas grandes */
-  }
-
-  /* ---------- FOOTER ENDS ---------- */
 }
 
 @media (min-width: 992px) { /* Escritorios estándar */
@@ -574,7 +585,15 @@ Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
     max-width: 100%;                    /* Permite que el contenido se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__data) en pantallas menores al width (Mobile) */
   }
 
-  /* ---------- ABOUT ENDS ---------- */
 }
 
-/* ---------- MEDIA QUERIES END ---------- */
+/* ---------- ABOUT ENDS ---------- */
+
+/* Rangos Recomendados para Media Queries (CSS):
+
+Móviles (Portrait): (max-width: 575px) - Estilos para teléfonos pequeños y medianos.
+Móviles (Landscape) / Tablets: (min-width: 576px) - Tabletas en vertical y móviles grandes.
+Tablets (Landscape) / Laptops: (min-width: 768px) - Tablets en horizontal y portátiles pequeñas.
+Escritorio: (min-width: 992px) - Escritorios estándar.
+Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
+*/
