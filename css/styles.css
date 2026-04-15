@@ -1,9 +1,33 @@
-* { box-sizing: border-box; }
-
-body, header, nav, ul, li, a, main, div, h1, h2, h3, p, footer, label { margin: 0; padding: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Colors */
 :root{
+
+  /* Marca y Acciones (Magenta Principal) */
+  --first-color: rgb(195, 32, 107);
+  --first-alpha-color: rgba(195, 32, 107, 0.75);
+
+  /* Acento y Variantes (Magenta Claro) */
+  --second-color: rgb(229, 85, 145);
+  --second-alpha-color: rgba(229, 85, 145, 0.75);
+
+  /* Texto Oscuro (Especial para lectura sobre crema) */
+  --third-color: rgb(92, 18, 54);
+  --third-alpha-color: rgba(92, 18, 54, 0.75);
+
+  /* Enlaces y Estados Activos (Blanco puro) */
+  --link-color: rgb(255, 255, 255);
+  --link-alpha-color: rgba(255, 255, 255, 0.75);
+
+  /* Fondos (Crema característico de la marca) */
+  --bg-color: rgb(242, 231, 226);
+  --bg-alpha-color: rgba(242, 231, 226, 0.75);
+  
+  /* Color de superficie adicional */
+  --surface-color: rgb(255, 255, 255);
+
+  /* -------------------------------------------------- */
+
   /* Marca y Acciones */
   --color-primary: #c3206b;           /* Magenta principal */
   --color-primary-variant: #e55591;   /* Magenta claro (Acento) */
@@ -19,98 +43,104 @@ body, header, nav, ul, li, a, main, div, h1, h2, h3, p, footer, label { margin: 
 }
 
 body{
-  font-family: 'Montserrat', Arial, sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text-main);
-
-  display: flex;                        /* Convierte el body en un contenedor flex vertical de altura completa para controlar el footer */
-  flex-direction: column;
-  min-height: 100vh;                    /* Ocupará como mínimo de alto el 100% del viewport */
-}
-
-main{
-  flex-grow: 1;                         /* Absorbe el espacio disponible en el eje vertical para empujar el footer al final de la página */
+  font-family: 'Raleway', Arial, sans-serif;
+  background-color: var(--bg-color);
 }
 
 /* ---------- HEADER SECTION (Mobile) ---------- */
 .header{
-  background-color: var(--color-primary);
-  box-shadow: 0 0 5px #0003;          /* Sombra sutil: 0 desplazamiento, 5px de desenfoque y color negro con 20% de opacidad */
-
-  position: sticky;                     /* Fija el elemento al scroll pero respetando su espacio original en el flujo del documento */
+  background-color: var(--second-color);
+  position: sticky;                     /* Fija el header al scroll respetando su espacio original en el flujo del documento */
   top: 0px;                             /* Define el punto de anclaje para el sticky (borde superior) */
-  text-align: center;                   /* Hereda la alineación centrada a los elementos de texto internos */
-  padding: 10px 20px;                   /* Define el espacio que habra entre el borde y los elementos del header */
-  
-  z-index: 10;                           /* Asegura que el header se posicione por encima de otros elementos en el eje Z. */
-  min-width: 230px;                     /* Establece un ancho mínimo para prevenir que el diseño se rompa en dispositivos extremadamente pequeños. */
+  z-index: 10;                          /* Asegura que el header se posicione por encima de otros elementos en el eje Z */
+  box-shadow: 0 0 5px #0003;          /* Sombra sutil: 0 desplazamiento, 5px de desenfoque y color negro con 20% de opacidad */
 }
 
 .header__nav{
-  max-width: 1440px;
-  margin: auto;
-}
-
-.header__logo-container .navbar-brand{
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  margin: 0 5px;
+  max-width: 1320Px;                    /* Limita el punto hasta donde se mueven los elementos del header en pantallas ultra anchas */
+  margin: auto;                         /* Centra el contenido del header (logo y links) */
 }
 
 .header__logo{
-  width: 64px;                          /* Define un ancho fijo de 64px para el logotipo de la marca. */
-  max-width: 100%;                      /* Restringe el ancho para que la imagen sea fluida y no desborde su contenedor. */
+  height: 3rem;                         /* Tamaño de fuente relativo (3 * 16px del navegador = 48px) */
+  width: auto;                          /* Ancho automático para que no se pierda la relación de aspecto del logo */
 
-  filter: drop-shadow(0 0 5px var(--color-text-main));  /* Genera una sombra que sigue el contorno real de los píxeles del logo (ideal para archivos PNG). */
-  transition: filter 0.2s ease, transform 0.2s ease;    /* Suaviza la transición del filtro y la escala durante 0.2 segundos. */
+  filter: drop-shadow(0 0 5px var(--third-color));      /* Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG) */
+  transition: filter 0.3s ease, transform 0.3s ease;    /* Suaviza la transición del filtro y la escala durante 0.3 segundos. */
 }
 
 .header__logo:hover{
-  filter: drop-shadow(0 0 5px var(--color-active));     /* Cambia el color de la sombra proyectada al color de estado activo de la marca. */
-  transform: scale(1.10);                                         /* Aumenta el tamaño del logo un 10% mediante una transformación de escala. */
+  filter: drop-shadow(0 0 5px var(--link-color));       /* Cambia el color de la sombra del logo a blanco. */
+  transform: scale(1.15);                               /* Aumenta el tamaño del logo un 10% mediante una transformación de escala. */
 }
 
 .header__open-nav-button{
-  color: var(--color-bg);
-  border: 2px solid var(--color-bg);
-  font-size: 1.2rem;                    /* Tamaño de fuente relativo (1.5 * 16px del navegador = 24px) */
-  transition: transform 0.2s ease;
-}
-
-.header__open-nav-button:hover{
-  scale: 1.12;                          /* Aumenta el tamaño del botón un 12% al pasar el cursor para dar feedback de interactividad. */
+  border: none;                         /* Elimina el borde del ícono de menú hamburguesa */
 }
 
 .header__open-nav-button:focus{
-  box-shadow: none;                     /* Elimina la sombra de enfoque predeterminada de Bootstrap para una estética más limpia. */
-  outline: 2px solid var(--color-bg);
-  outline-offset: 2px;
+  box-shadow: none;                     /* Elimina la sombra de enfoque predeterminada de Bootstrap para una estética más limpia */
 }
 
-.navbar-toggler-icon{
-  filter: brightness(0) invert(1);      /* Invierte los colores del icono de Bootstrap para que sea visible (blanco) sobre el fondo oscuro. */
+.header__open-nav-button .navbar-toggler-icon{
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28 255, 255, 255, 1 %29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  /* Modificación de la variable original del ícono hamburguesa para cambiar el color base */
 }
+
+.header__open-nav-button .navbar-toggler-icon:hover{
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28 195, 32, 107, 0.75 %29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  /* Modificación de la variable original del ícono hamburguesa para cambiar el color en estado 'hover' */
+
+  transition: background-image 0.2s ease-out;        /* Cambia el color del ícono del menú hamburguesa en 0.2 segundos. */
+}
+
 .header__nav-list{
-  gap: 15px;                            /* Define un espaciado constante de 15px entre los elementos de la lista de navegación (links). */
+  margin-top: 5px;                      /* Genera un espacio que da aire a los links cuando el menú hamburguesa esta abierto */
 }
 
-.header__nav-list .nav-link{
-  color: var(--color-bg);
-  transition: transform 0.2s ease, color 0.2s ease;          /* Prepara la animación de escalado para los enlaces del menú. */
+.header__nav-item:hover{  
+  background-color: var(--first-alpha-color);
+  color: var(--surface-color);
+  border-radius: 10px;                  /* Suaviza los bordes del color de fondo en hover de los links */
 }
 
-.header__nav-list .nav-link.active{              
-  color: var(--color-active);           /* Refuerza la jerarquía visual del enlace activo */
-  font-weight: 700;                    
+.nav-link{
+  color: var(--bg-color);
+  font-size: 1.15rem;                   /* Tamaño de fuente relativo (1.15 * 16px del navegador = 18.4px) */
+  font-weight: bold;                    /* Le da más peso a la fuente de texto de los links */
+  text-align: center;                   /* Alinea al centro el texto de los links */
+
+  transition: transform 0.3s ease,      /* Transición de 0.3s de cambio de tamaño (escala) al texto del link */
+              color 0.3s ease-in-out;   /* Transición de 0.3s de cambio de color al texto del link */
 }
 
-.header__nav-item .nav-link:is(:hover, :focus){        /* Pseudo-clase funcional :is() para agrupar estados de interacción */
-  
-  /* Proporciona feedback visual de interactividad mediante cambio de color y cambio de escala */
-  color: var(--color-active);
-  transform: scale(1.05);
-  outline: none;
+.nav-link:is(:hover, :focus){
+  color: var(--bs-white);
+  transform: scale(1.06);
+}
+
+.nav-link--active{
+  color: var(--bs-white);               /* Define el color blanco de la fuente al texto del link donde esta situado el usuario */
+  text-shadow: 0 0 5px var(--bs-white); /* Define un brillo blanco en el link la página donde esta situado el usuario */
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@media screen and (min-width: 768px){   /* Tablets en horizontal y portátiles pequeñas (md) */
+
+  .header__nav-list{
+    /* margin-left: auto;               /* Reemplazado por la clase ms-md-auto de Bootstrap */
+    margin-top: 0px;                    /* Resetea el margin superior dado en la versión mobile */
+    gap: 10px;                          /* Define un espaciado de 15px entre los links de navegación */
+  }
+
+  .header__nav-item{
+    padding-left: 0;
+  }
+
+  .header__nav-item:is(:hover, :focus){ /* :is() agrupa */
+    background-color: transparent;      /* Resetea el background-color dado en la versión mobile */
+    margin: 0;
+  }
 }
 
 /* ---------- HEADER ENDS ---------- */
@@ -457,11 +487,13 @@ main{
 
 .whatsapp-btn img {
   width: 60px;
-  transition: scale .25s ease;
+  transition: transform .25s ease,
+              filter 0.25s ease;
 }
 
 .whatsapp-btn:hover img {
-  scale: 1.2;                /* Efecto de crecimiento suave */
+  transform: scale(1.2);                           /* Efecto de crecimiento suave */
+  filter: drop-shadow(0 0 5px var(--third-color));      /* Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG) */
 }
 
 /* -------------------------------------------------- */
@@ -477,7 +509,7 @@ Escritorio: (min-width: 992px) - Escritorios estándar.
 Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
 */
 
-@media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas */
+@media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas (md en Bootstrap) */
 
   /* ---------- CONTACT SECTION ---------- */
   .contact__form fieldset{

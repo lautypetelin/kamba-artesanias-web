@@ -13,7 +13,7 @@
     <title>Kamba - Contacto</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/kamba-logo.png" type="image/x-icon">
 
     <!-- CDN de Bootstrap (CSS) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -30,15 +30,13 @@
     
     <!-- HEADER -->
     <header class="header">
-      <nav class="header__nav navbar navbar-expand-md"> <!-- A partir de 768px se eliminará el boton hamburguesa -->
+      <nav class="header__nav navbar navbar-expand-md"> <!-- navbar-expand-md → A partir de 768px se eliminará el boton hamburguesa -->
 
-        <div class="container-fluid d-flex justify-content-space-between">
+        <div class="container">
 
-          <div class="header__logo-container">
-            <a class="navbar-brand" href="../index.html">
-              <img class="header__logo" src="../assets/logo.png" alt="Logo de Kámba">
-            </a>
-          </div>
+          <a class="navbar-brand" href="../index.html">
+            <img class="header__logo" src="../assets/kamba-logo.png" alt="Logo de Kamba">
+          </a>
 
           <button class="header__open-nav-button navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,7 +44,7 @@
 
           <div class="collapse navbar-collapse" id="navbar-toggler">
 
-            <ul class="header__nav-list navbar-nav ms-auto">
+            <ul class="header__nav-list navbar-nav ms-md-auto"> <!-- ms-md-auto → A partir de 768px se se aplicará un margin-left: auto -->
               <li class="header__nav-item nav-item">
                 <a class="nav-link" href="./arte_y_pintura.html">Árte y Pintura</a>
               </li>
@@ -57,7 +55,7 @@
                 <a class="nav-link" href="./sobre_kamba.html">Sobre Kamba</a>
               </li>
               <li class="header__nav-item nav-item">
-                <a class="nav-link active" aria-current="page" href="./contacto.html">Contacto</a>
+                <a class="nav-link nav-link--active" aria-current="page" href="./contacto.html">Contacto</a>
               </li>
             </ul>
 
@@ -69,33 +67,37 @@
 
     <main class="contact">
         <h2 class="contact__title">Envianos tu consulta</h2>
-        <form class="contact__form" method="get" action="#"> <!-- Debe ser POST -->
+        <form class="contact__form" action="https://api.web3forms.com/submit" method="POST">
 
+          <input type="hidden" name="access_key" value="3021972c-9ca0-4fca-b093-c1c2c265e57f">
+          <input type="hidden" name="from_name" value="Web Kamba">
+          <input type="hidden" name="subject" value="Correo de Kamba">
+          <input type="hidden" name="redirect" value="https://lautypetelin.github.io/kamba-artesanias-web/pages/contacto.html">
 
           <fieldset>
             <legend>Información personal</legend>
 
             <div class="contact__input-container">
               <label for="name">Nombre:
-                <input type="text" id="name" name="name" placeholder="Ej: Juán" required>
+                <input type="text" id="name" name="Nombre" placeholder="Ej: Juán" required>
               </label>
             </div>
 
             <div class="contact__input-container">
               <label for="lastname">Apellido:
-                <input type="text" id="lastname" name="lastname" placeholder="Ej: Perez" required>
+                <input type="text" id="lastname" name="Apellido" placeholder="Ej: Perez" required>
               </label>
             </div>
             
             <div class="contact__input-container">
               <label for="email">Correo electrónico:
-                <input type="email" name="email" id="email" placeholder="Ej: correo@mail.com" required>
+                <input type="email" id="email" name="Email" placeholder="Ej: correo@mail.com" required>
               </label>
             </div>
 
             <div class="contact__input-container">
               <label for="phone-number">Teléfono <span>(Opcional)</span>:
-                <input type="tel" name="phone-number" id="phone-number" placeholder="+0 1234 567891">
+                <input type="tel" name="phone-number" id="Telefono" placeholder="+0 1234 567891">
               </label>
             </div>
           </fieldset>
@@ -105,7 +107,7 @@
 
             <div class="contact__input-container">
               <label for="product-type">Tipo de producto:
-                <select name="product-type" id="product-type" required>
+                <select id="product-type" name="Producto" required>
                   <option value="" disabled selected>Selecciona una opción</option>
                   <option value="macetas">Macetas</option>
                   <option value="cuadros">Cuadros</option>
@@ -116,7 +118,7 @@
             
             <div class="contact__input-container">
               <label for="message">Tu consulta:
-                <textarea name="message" id="message" cols="30" rows="5" placeholder="Contanos qué necesitas..." required></textarea>
+                <textarea id="message" name="Mensaje" cols="30" rows="5" placeholder="Contanos qué necesitas..." required></textarea>
               </label>
             </div>
           </fieldset>
