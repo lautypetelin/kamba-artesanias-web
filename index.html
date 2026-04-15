@@ -66,65 +66,71 @@
     </header>
 
     <main>
-
+      
       <section class="hero">
         <div class="hero__content">
           <h1 class="hero__title">Arte y Costura con alma</h1>
           <p class="hero__subtitle">Piezas únicas pintadas a mano y creadas con amor en San Luis.</p>
-          <a href="./pages/arte_y_pintura.html" class="hero__btn">Ver Catálogo</a>
+          <a href="#categories" class="hero__btn">Ver Catálogo</a>
         </div>
       </section>
 
-      <section class="categories">
-        <h2 class="categories__title">Explorá nuestro mundo</h2>
-        <div class="categories__grid">
-          <a href="./pages/arte_y_pintura.html" class="categories__item">
-            <img src="https://picsum.photos/51/50" alt="Macetas">
-            <span>Arte y Pintura</span>
-          </a>
-          <a href="./pages/costura_creativa.html" class="categories__item">
-            <img src="https://picsum.photos/50/51" alt="Costura">
-            <span>Costura Creativa</span>
-          </a>
-        </div>
-      </section>
+      <div class="container">
+      
+        <section class="categories" id="categories">
+          <h2 class="categories__title">Explorá nuestro mundo</h2>
+          
+          <div class="categories-flex">
+            <a href="./pages/arte_y_pintura.html" class="categories__item">
+              <img src="https://picsum.photos/51/50" alt="Macetas">
+              <span class="categories__description">Arte y Pintura</span>
+            </a>
+            <a href="./pages/costura_creativa.html" class="categories__item">
+              <img src="https://picsum.photos/50/51" alt="Costura">
+              <span class="categories__description">Costura Creativa</span>
+            </a>
+          </div>
 
-      <section class="products">
-        <h2 class="products__title">Lo más pedido</h2>
-        <div class="products__grid">
+        </section>
 
-          <article class="card">
-            <img class="card__img" src="https://picsum.photos/500/250" alt="Maceta grande">
-            <div class="card__content">
-              <h3 class="card__title">Maceta grande</h3>
-              <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
-              <span class="card__price">$8.600</span>
-              <button class="card__btn">Agregar al carrito</button>
-            </div>
-          </article>
+        <section class="products">
+          <h2 class="products__title">Lo más pedido</h2>
+          <div class="products__grid">
 
-          <article class="card">
-            <img class="card__img" src="https://picsum.photos/500/251" alt="Cartuchera">
-            <div class="card__content">
-              <h3 class="card__title">Cartuchera</h3>
-              <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
-              <span class="card__price">$3.200</span>
-              <button class="card__btn">Agregar al carrito</button>
-            </div>
-          </article>
+            <article class="card">
+              <img class="card__img" src="https://picsum.photos/500/250" alt="Maceta grande">
+              <div class="card__content">
+                <h3 class="card__title">Maceta grande</h3>
+                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
+                <span class="card__price">$8.600</span>
+                <button class="card__btn">Agregar al carrito</button>
+              </div>
+            </article>
 
-          <article class="card">
-            <img class="card__img" src="https://picsum.photos/500/252" alt="cuadro mediano">
-            <div class="card__content">
-              <h3 class="card__title">Cuadro mediano</h3>
-              <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
-              <span class="card__price">$6.000</span>
-              <button class="card__btn">Agregar al carrito</button>
-            </div>
-          </article>
+            <article class="card">
+              <img class="card__img" src="https://picsum.photos/500/251" alt="Cartuchera">
+              <div class="card__content">
+                <h3 class="card__title">Cartuchera</h3>
+                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
+                <span class="card__price">$3.200</span>
+                <button class="card__btn">Agregar al carrito</button>
+              </div>
+            </article>
 
-        </div>
-      </section>
+            <article class="card">
+              <img class="card__img" src="https://picsum.photos/500/252" alt="cuadro mediano">
+              <div class="card__content">
+                <h3 class="card__title">Cuadro mediano</h3>
+                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi.</p>
+                <span class="card__price">$6.000</span>
+                <button class="card__btn">Agregar al carrito</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+      </div>
     </main>
 
     <!-- FOOTER -->

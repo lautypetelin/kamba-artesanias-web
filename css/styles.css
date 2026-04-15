@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+html{
+  scroll-padding-top: 100px; /* Otorga 100px de padding superior a todas las anclas internas */
+}
+
 /* Colors */
-:root{
+:root {
 
   /* Marca y Acciones (Magenta Principal) */
   --first-color: rgb(195, 32, 107);
@@ -42,13 +46,13 @@
   --color-active: #ffffff;            /* Para denotar la página actual en el nav */
 }
 
-body{
+body {
   font-family: 'Raleway', Arial, sans-serif;
   background-color: var(--bg-color);
 }
 
 /* ---------- HEADER SECTION (Mobile) ---------- */
-.header{
+.header {
   background-color: var(--second-color);
   position: sticky;                     /* Fija el header al scroll respetando su espacio original en el flujo del documento */
   top: 0px;                             /* Define el punto de anclaje para el sticky (borde superior) */
@@ -56,12 +60,12 @@ body{
   box-shadow: 0 0 5px #0003;          /* Sombra sutil: 0 desplazamiento, 5px de desenfoque y color negro con 20% de opacidad */
 }
 
-.header__nav{
+.header__nav {
   max-width: 1320px;                    /* Limita el punto hasta donde se mueven los elementos del header en pantallas ultra anchas */
   margin: auto;                         /* Centra el contenido del header (logo y links) */
 }
 
-.header__logo{
+.header__logo {
   height: 3rem;                         /* Tamaño de fuente relativo (3 * 16px del navegador = 48px) */
   width: auto;                          /* Ancho automático para que no se pierda la relación de aspecto del logo */
 
@@ -69,42 +73,42 @@ body{
   transition: filter 0.3s ease, transform 0.3s ease;    /* Suaviza la transición del filtro y la escala durante 0.3 segundos. */
 }
 
-.header__logo:hover{
+.header__logo:hover {
   filter: drop-shadow(0 0 5px var(--link-color));       /* Cambia el color de la sombra del logo a blanco. */
   transform: scale(1.15);                               /* Aumenta el tamaño del logo un 10% mediante una transformación de escala. */
 }
 
-.header__open-nav-button{
+.header__open-nav-button {
   border: none;                         /* Elimina el borde del ícono de menú hamburguesa */
 }
 
-.header__open-nav-button:focus{
+.header__open-nav-button:focus {
   box-shadow: none;                     /* Elimina la sombra de enfoque predeterminada de Bootstrap para una estética más limpia */
 }
 
-.header__open-nav-button .navbar-toggler-icon{
+.header__open-nav-button .navbar-toggler-icon {
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28 255, 255, 255, 1 %29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   /* Modificación de la variable original del ícono hamburguesa para cambiar el color base */
 }
 
-.header__open-nav-button .navbar-toggler-icon:hover{
+.header__open-nav-button .navbar-toggler-icon:hover {
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28 195, 32, 107, 0.75 %29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   /* Modificación de la variable original del ícono hamburguesa para cambiar el color en estado 'hover' */
 
   transition: background-image 0.2s ease-out;        /* Cambia el color del ícono del menú hamburguesa en 0.2 segundos. */
 }
 
-.header__nav-list{
+.header__nav-list {
   margin-top: 5px;                      /* Genera un espacio que da aire a los links cuando el menú hamburguesa esta abierto */
 }
 
-.header__nav-item:hover{  
+.header__nav-item:hover {  
   background-color: var(--first-alpha-color);
   color: var(--surface-color);
   border-radius: 10px;                  /* Suaviza los bordes del color de fondo en hover de los links */
 }
 
-.nav-link{
+.nav-link {
   color: var(--bg-color);
   font-size: 1.15rem;                   /* Tamaño de fuente relativo (1.15 * 16px del navegador = 18.4px) */
   font-weight: bold;                    /* Le da más peso a la fuente de texto de los links */
@@ -114,30 +118,30 @@ body{
               color 0.3s ease-in-out;   /* Transición de 0.3s de cambio de color al texto del link */
 }
 
-.nav-link:is(:hover, :focus){
+.nav-link:is(:hover, :focus) {
   color: var(--bs-white);
   transform: scale(1.06);
 }
 
-.nav-link--active{
+.nav-link--active {
   color: var(--bs-white);               /* Define el color blanco de la fuente al texto del link donde esta situado el usuario */
   text-shadow: 0 0 5px var(--bs-white); /* Define un brillo blanco en el link la página donde esta situado el usuario */
 }
 
 /* ---------- MEDIA QUERIES ---------- */
-@media screen and (min-width: 768px){   /* Tablets en horizontal y portátiles pequeñas (md) */
+@media screen and (min-width: 768px) {   /* Tablets en horizontal y portátiles pequeñas (md) */
 
-  .header__nav-list{
+  .header__nav-list {
     /* margin-left: auto;               /* Reemplazado por la clase ms-md-auto de Bootstrap */
     margin-top: 0px;                    /* Resetea el margin superior dado en la versión mobile */
     gap: 10px;                          /* Define un espaciado de 15px entre los links de navegación */
   }
 
-  .header__nav-item{
+  .header__nav-item {
     padding-left: 0;
   }
 
-  .header__nav-item:is(:hover, :focus){ /* :is() agrupa */
+  .header__nav-item:is(:hover, :focus) { /* :is() agrupa */
     background-color: transparent;      /* Resetea el background-color dado en la versión mobile */
     margin: 0;
   }
@@ -146,29 +150,29 @@ body{
 /* ---------- HEADER ENDS ---------- */
 
 /* ---------- FOOTER SECTION (Mobile) ---------- */
-.footer{
+.footer {
   background-color: var(--third-color);
   color: var(--bg-color);
 
   padding: 25px 0;                      /* Espaciado interno para separar el contenido de los bordes del footer */
 }
 
-.footer .container{
+.footer .container {
   display: flex;                        /* Layout flexible para apilar secciones en vertical (móvil) */
   flex-direction: column;
   gap: 10px;                            /* Espaciado uniforme de 10px entre los bloques de Contacto, Enlaces y Redes */
 }
 
-.footer__column{
+.footer__column {
   text-align: center;                   /* Centrado de todo el contenido para una mejor jerarquía visual */
 }
 
-.footer__title{
+.footer__title {
   font-size: 1.25rem;                   /* Tamaño de fuente relativo (1.2 * 16px del navegador = 20px) */
   margin-bottom: 15px;                  /* Margen inferior para separar el título de los datos o links */
 }
 
-.footer__list{
+.footer__list {
   list-style: none;                     /* Elimina los marcadores o viñetas predeterminadas de la lista */
   padding-left: 0;                      /* Elimina el padding izquierdo predeterminado de los list-item */
 
@@ -178,29 +182,29 @@ body{
   gap: 5px;
 }
 
-.footer__list--social{
+.footer__list--social {
   display: flex;                        /* Layout horizontal para los iconos de redes sociales */
   flex-direction: row;
   justify-content: center;              /* Centrado horizontal de los iconos */
   gap: 20px;                            /* Espacio de 20px entre iconos para evitar clics accidentales en pantallas táctiles */
-  font-size: 1.3rem;                    /* Tamaño de los iconos de redes sociales */
+  font-size: 1.3rem;                    /* Tamaño de los iconos de redes sociales (20.8px) */
 }
 
-.footer__list-item a{
+.footer__list-item a {
   color: var(--bg-color);
   text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
 
   transition: color .3s ease;           /* Transición suave de 0.3s para el cambio de color al interactuar */
 }
 
-.footer__list-item a:hover{
+.footer__list-item a:hover {
   color: var(--second-color);  /* Feedback visual: cambia al color magenta claro de la marca al pasar el cursor */
 }
 
 /* ---------- MEDIA QUERIES ---------- */
-@media screen and (min-width: 768px){   /* Tablets en horizontal y portátiles pequeñas (md) */
+@media screen and (min-width: 768px) {   /* Tablets en horizontal y portátiles pequeñas (md) */
 
-  .footer .container{
+  .footer .container {
     flex-direction: row;                /* Cambia a disposición horizontal en pantallas medianas/grandes */
     justify-content: space-around;      /* Distribuye las 3 columnas equitativamente con espacio alrededor */
     max-width: 1320px;                  /* Limita el ancho máximo para mantener coherencia con el resto de la web */
@@ -208,7 +212,7 @@ body{
     margin-bottom: 15px;                /* Margen inferior de seguridad antes del copyright */
   }
 
-  .footer__column{
+  .footer__column {
     text-align: center;                 /* Mantenemos el centrado para alinear con el copyright inferior */
     flex: 1;                            /* Forzamos que cada columna ocupe el mismo ancho (33.3%) */
 
@@ -226,60 +230,67 @@ body{
 
 /* ---------- HOME SECTION (Mobile) ---------- */
 .hero {
-  color: var(--color-surface);
   background: linear-gradient(#0005),           /* Capa de fondo 1: Gradiente negro con 31% de opacidad (#0005) para oscurecer la imagen */
-              url('../assets/hero.png');          /* Capa de fondo 2: Imagen principal del hero (.png) */
+  url('../assets/hero.png');                      /* Capa de fondo 2: Imagen principal del hero (.png) */
   background-size: cover;                         /* Asegura que la imagen de fondo cubra todo el contenedor, escalando y recortando sin perder su proporción original */
   background-position: center;                    /* Posiciona la imagen siempre en el centro geométrico del contenedor hero */
   
+  text-align: center;                   /* Hereda la alineación centrada a los elementos de texto */
+  color: var(--bg-color);               /* Hereda el color a los elementos de texto */
+  
   height: 80vh;                         /* Define una altura relativa al 80% de la altura total de la pantalla (Viewport Height) */
-
   display: flex;                        /* Activa el modelo de caja flexible (Flexbox) para el control de la disposición de los hijos */
   justify-content: center;              /* Alinea y centra los elementos hijos (.hero__content) en el eje principal (horizontal) */
   align-items: center;                  /* Alinea y centra los elementos hijos en el eje transversal (vertical) */
-  text-align: center;                   /* Hereda la alineación centrada a los elementos de texto internos */
 }
 
 .hero__title {
   text-wrap: balance;                   /* El navegador balancea el ancho de las líneas para evitar que queden palabras sueltas (huérfanas) al final, logrando un título simétrico y armónico */
   font-size: 3rem;                      /* Tamaño de fuente relativo (3 * 16px del navegador = 48px) */
+  font-weight: bold;                    /* Le da más peso al título engrosando la fuente */
   margin-bottom: 10px;                  /* Crea un espacio inferior para separarlo visualmente del subtítulo */
 }
 
-.hero__subtitle{
+.hero__subtitle {
   text-wrap: pretty;                    /* Optimiza el salto de línea para evitar que la última palabra del párrafo quede sola en una línea (viuda), mejorando la prolijidad visual. */
-  max-width: 600px;                     /* Se recomienda un ancho máximo para no fatigar la vista con líneas muy largas */
+  font-size: 1.3rem;                    /* Tamaño de fuente relativo (1.3 * 16px del navegador = 20.8px) */
+  padding: 0 30px;                      /* No permite que el  texto se pegue a los bordes de la pantalla si esta es muy angosta */
+  max-width: 600px;                     /* Ancho máximo para no fatigar la vista con líneas muy largas */
 }
 
 .hero__btn {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+  background-color: var(--first-color);
+  color: var(--bg-color);
+  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
   display: inline-block;                /* Convierte el enlace en un elemento de bloque en línea para aplicar márgenes y paddings correctamente, sin que pierda su flujo natural */
   padding: 15px 30px;                   /* Espaciado interno generoso (15px arriba/abajo, 30px lados) para aumentar el área de interacción (clic) */
-  text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
   border-radius: 30px;                  /* Define un radio de borde alto para lograr esquinas completamente redondeadas (tipo "píldora") */
   font-weight: bold;                    /* Aumenta el peso de la fuente (Bold/700) para destacar la llamada a la acción */
-  margin-top: 30px;                     /* Crea una separación superior para distanciar el botón del texto de descripción */
+  margin: 30px;                         /* Crea una separación para distanciar el botón de cualquier elemento adyacente */
+
+  transition: transform 0.3s ease;      /* Aumenta su escala en un 10% cuando se pasa el mouse por encima del botón */
 }
 
-.categories__title,
-.products__title {
-  color: var(--color-text-main);
+.hero__btn:hover {
+  transform: scale(1.1);
+}
+
+/* ------------------------------ */
+
+.categories__title {
+  color: var(--third-color);
   text-align: center;                   /* Alinea el texto al centro de su elemento contenedor h2 */
   margin: 40px 0 25px;                  /* Crea un espacio superior de 40px para distanciar de la sección anterior y 20px inferior para separarlo visualmente de la grilla */
-  font-size: 2rem;                      /* Tamaño de fuente relativo (2 * 16px del navegador = 32px) */
+  font-size: 2.2rem;                    /* Tamaño de fuente relativo (2.2 * 16px del navegador = 35.2px) */
 }
 
-.categories__grid {
-  display: grid;
-  grid-template-columns: repeat(        /* Crea una grilla responsiva */
-    auto-fill,                          /* 'auto-fill' rellena la fila con tantas columnas como quepan.  */
-    minmax(200px, 1fr)                  /* 'minmax' asegura que las tarjetas nunca midan menos de 200px y se expandan proporcionalmente (1fr) */
-    ); 
-  gap: 25px;                            /* Establece una separación de 25px entre las tarjetas de categoría (grid-items) */
+.categories-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin: 20px auto 30px;               /* Centra el bloque .categories__grid horizontalmente dentro de su elemento padre (.categories) */
   max-width: 600px;                     /* Limita el ancho máximo para controlar la cantidad de columnas en pantallas muy grandes y evitar que se estiren demasiado */
-  padding: 0 15px;                      /* Genera un espacio de seguridad lateral (padding) para evitar que el contenido pegue contra los bordes del dispositivo en pantallas menores al max-width (ej. celulares). */
+  gap: 25px;                            /* Establece una separación de 25px entre las tarjetas de categoría (flex-items) */
 }
 
 .categories__item img {
@@ -291,8 +302,12 @@ body{
   box-shadow: 0 0 15px #0005;
 }
 
+.categories__description{
+  font-size: 1.5rem;
+  color: var(--third-color);
+}
+
 .categories__item {
-  color: var(--color-text-main);
   display: grid;                        /* Convierte el enlace en un contenedor Grid para alinear la imagen y el texto */
   justify-items: center;                /* Alinea y centra los grid-items (imagen y span) horizontalmente dentro de la tarjeta */
   text-decoration: none;                /* Elimina el subrayado que los navegadores aplican por defecto a los enlaces (<a>) */
