@@ -387,76 +387,80 @@ body {
 /* ---------- PRODUCT ENDS ---------- */
 
 /* ---------- ABOUT SECTION (Mobile) ---------- */
-.about__wrapper{
-  max-width: 1400px;                    /* Limita la expansión horizontal para mantener la estética en pantallas grandes */
-  min-width: 250px;                     /* Asegura un ancho mínimo para evitar que el contenedor se colapse en pantallas muy pequeñas */
-
-  display: flex;                        /* Activamos Flexbox en el contenedor principal */
-  flex-direction: column;               /* Colocamos los flex-items en forma vertical */
-  justify-content: center;              /* Alinea y centra los flex-items verticalmente dentro del contenedor */
-  align-items: center;                  /* Alinea y centra los flex-items horizontalmente dentro del contenedor */
-  padding: 20px;                        /* Crea un espacio uniforme de 20px superior/inferior y 15px lateral para separar el contenido de los bordes */
-  gap: 25px;                            /* Define una separación uniforme y controlada de 25px entre los elementos hijos en el eje vertical */
-  margin: 20px auto 40px;               /* Centra el bloque .about__wrapper horizontalmente dentro de su elemento padre */
-}
-
-.about__img-container{
-  max-height: 500px;                    /* Limita la altura máxima de la imagen para evitar que se desborde en pantallas pequeñas */
-  border-radius: 8px;                   /* Aplica un radio de borde de 8px para suavizar las esquinas del contenedor */
-  overflow: hidden;                     /* Oculta cualquier contenido que se desborde del contenedor */
-}
-
-.about__img{
-  width: 720px;                         /* Establece un ancho fijo de 720px para la imagen */
-  max-width: 100%;                      /* Permite que la imagen se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__img-container) en pantallas menores al max-width (Mobile) */
-
-  border-radius: 8px;                   /* Aplica un radio de borde de 8px para suavizar las esquinas de la imagen */
-  overflow: hidden;                     /* Oculta cualquier contenido que se desborde de la imagen */
+.about{
+  padding: 1.25rem 0;                   /* Espaciado vertical para separar la sección del header/footer */
 }
 
 .about__data{
-  max-width: 100%;                      /* Permite que el contenedor se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__wrapper) en pantallas menores al max-width (Mobile) */
-  margin: auto;                         /* Centra el bloque .about__data horizontalmente dentro de su elemento padre */
+  /* La clase 'row' de Bootstrap contiene display: flex */
+  justify-content: center;
+  align-items: center;                  /* Alineación centrada para la disposición vertical en móviles */
+  margin-bottom: 1.25rem;
 }
 
 .about__content{
-  width: 720px;                         /* Establece un ancho fijo de 720px para el contenido de texto */
-  max-width: 100%;                      /* Permite que el contenido se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__data) en pantallas menores al max-width (Mobile) */
+  color: var(--third-color);
+  margin-bottom: 1.5rem;                /* Tamaño de fuente relativo (1.5 * 16px del navegador = 24px) */
+  text-align: center;                   /* Centrado para favorecer la lectura en pantallas pequeñas */
 }
 
 .about__title{
-  text-wrap: balance;                   /* Balancea el ancho de las líneas para evitar que queden palabras sueltas (huérfanas) al final, logrando un título simétrico y armónico */
-  text-align: center;                   /* Alinea el texto del título al centro del ancho del contenedor */
+  font-size: 2.2rem;                    /* Tamaño de fuente relativo (2.2 * 16px del navegador = 35.2px) */
+  margin: 30px 0;                       /* Margen para jerarquizar el título respecto al contenido */
+  font-weight: 600;
 }
 
 .about__description{
-  margin: 15px 0;                       /* Crea una separación uniforme de 15px superior/inferior y 0px lateral para separar los párrafos de texto */
-  text-wrap: pretty;                    /* Optimiza el salto de línea para evitar que la última palabra del párrafo quede sola en una línea (viuda), mejorando la prolijidad visual. */
+  text-wrap: pretty;                    /* Evita palabras huérfanas/viudas para un bloque de texto armónico */
+  font-size: 1.2rem;                    /* Tamaño de fuente relativo (1.2 * 16px del navegador = 19.2px) */
+  margin: 15px 0;                       /* Separación rítmica entre párrafos */
+}
+
+.about__img{
+  width: 100%;
+  height: 100%;
+  
+  /* Mantiene la proporción de la imagen recortando el excedente para llenar el contenedor */
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 15px;                  /* Aplica un radio de borde para suavizar las esquinas de la imagen */
+  box-shadow: 0 0 8px #0009;          /* Resalte visual para dar profundidad a la fotografía */
+  overflow: hidden;                     /* Oculta cualquier contenido que se desborde del contenedor */
 }
 
 /* ---------- MEDIA QUERIES ---------- */
 @media (min-width: 992px) { /* Escritorios estándar */
 
-  .about__wrapper{
-    flex-direction: row-reverse;        /* Invierte el orden de los flex-items (imagen y texto) para que la imagen quede a la izquierda y el texto a la derecha */
-    justify-content: space-around;      /* Alinea y distribuye los flex-items con espacios uniformes entre y alrededor */        
-    margin: auto;                       /* Centra el bloque .about__wrapper horizontalmente dentro de su elemento padre */
-    gap: 30px;                          /* ¡CLAVE PRO! Define una separación uniforme y controlada de 30px entre la imagen y el bloque de texto */
+  .about{
+    padding: 5.25rem 0;                 /* Incremento del aire visual en pantallas grandes */
   }
 
-  .about__img-container{
-    margin: 70px auto;                  /* Crea una separación uniforme de 70px superior/inferior para distanciar la imagen del contenido */
+  .about__data{
+    flex-direction: row-reverse;        /* Invierte el orden de los flex-items (imagen y texto) para que la imagen quede a la izquierda */
+    align-items: stretch;               /* Fuerza a que ambas columnas (texto e imagen) tengan la misma altura máxima */
   }
 
+  .about__content {
+    text-align: left;                   /* Alineación clásica de lectura para párrafos largos en PC */
+    padding-left: 3rem;                 /* Espacio de respiro entre el bloque de texto y la imagen */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;            /* Centrado vertical del texto respecto a la altura de la columna vecina */
+  }
+
+  .about__img-container {
+    display: flex;                      /* Permite que la imagen hija pueda expandirse al 100% de la altura del padre stretch */
+    padding: 0;
+    margin-bottom: 0;
+  }
+  
   .about__img{
-    width: 600px;                       /* Establece un ancho fijo de 600px para la imagen en pantallas grandes */
+    width: 100%;
+    height: 100%;                       /* La mide lo que mide el texto */
+    object-fit: cover;
   }
-
-  .about__content{
-    width: 400px;                       /* Establece un ancho fijo de 400px para el contenido de texto en pantallas grandes */
-    max-width: 100%;                    /* Permite que el contenido se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.about__data) en pantallas menores al width (Mobile) */
-  }
-
 }
 
 /* ---------- ABOUT ENDS ---------- */
@@ -561,7 +565,7 @@ body {
 
 .whatsapp-btn img {
   width: 60px;
-  filter: drop-shadow(0 0 4px var(--third-color));
+  filter: drop-shadow(0 0 4px #0004);
   transition: transform .25s ease,
               filter 0.25s ease;
 }
@@ -569,7 +573,7 @@ body {
 .whatsapp-btn:hover img {
   transform: scale(1.2)                                 /* Efecto de crecimiento suave y hacia adentro */
             translateY(-5px) translateX(-5px);          
-  filter: drop-shadow(0 0 8px var(--third-color));      /* Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG) */
+  filter: drop-shadow(0 0 8px var(--third-alpha-color));      /* Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG) */
 }
 
 /* Rangos Recomendados para Media Queries (CSS):
