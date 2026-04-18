@@ -187,7 +187,7 @@ body {
 }
 
 /* ---------- MEDIA QUERIES ---------- */
-@media screen and (min-width: 768px) {  /* Tablets en horizontal y portátiles pequeñas (md) */
+@media screen and (min-width: 768px) {  /* Tablets y portátiles pequeñas (md) */
 
   .footer .container {
     flex-direction: row;                /* Distribución horizontal para pantallas de tablet y escritorio */
@@ -430,7 +430,7 @@ body {
 }
 
 /* ---------- MEDIA QUERIES ---------- */
-@media (min-width: 992px) { /* Escritorios estándar */
+@media (min-width: 992px) { /* Notebooks y PC de escritorio (lg) */
 
   .about{
     padding: 5.25rem 0;                 /* Incremento del aire visual en pantallas grandes */
@@ -450,6 +450,10 @@ body {
     justify-content: center;            /* Centrado vertical del texto respecto a la altura de la columna vecina */
   }
 
+  .about__title{
+    text-align: center;
+  }
+
   .about__img-container {
     display: flex;                      /* Permite que la imagen hija pueda expandirse al 100% de la altura del padre stretch */
     padding: 0;
@@ -458,7 +462,7 @@ body {
   
   .about__img{
     width: 100%;
-    height: 100%;                       /* La mide lo que mide el texto */
+    height: 100%;                       /* La imágen mide lo que mide el texto */
     object-fit: cover;
   }
 }
@@ -466,50 +470,60 @@ body {
 /* ---------- ABOUT ENDS ---------- */
 
 /* ---------- CONTACT SECTION (Mobile) ---------- */
-.contact{
-  padding: 25px 30px 0;                 /* Genera un espacio interno superior de 25px y lateral de 30px (0 inferior) para separar el contenido de los bordes del dispositivo */
-  display: flex;                        /* Activa el modelo de caja flexible para el control UNIDIMENSIONAL de la disposición de los hijos (en este caso, en columna). */
-  flex-direction: column;               /* Establece la dirección del eje principal en columna, apilando los elementos verticalmente */
-  justify-content: center;              /* Alinea y centra los elementos hijos (.contact__title, formulario, etc.) en el eje principal (vertical) */
-  align-items: center;                  /* Alinea y centra los elementos hijos en el eje transversal (horizontal) */
+.contact {
+  padding: 40px 0;                      
+  color: var(--third-color);
 }
 
 .contact__title{
-  font-size: 2.4rem;                    /* Tamaño de fuente relativo (2.4 * 16px del navegador = 38.4px) */
-  text-align: center;                   /* Alinea el texto al centro (Aunque ya lo haga flex con su propiedad align-items, esta propiedad sirve para textos largos) */
-  padding-bottom: 20px;                 /* Genera un espacio interno inferior de 20px para separar el titulo del formulario */
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
-.contact__form{
-  max-width: 600px;                     /* Limita la expansión horizontal para mantener la estética y legibilidad en monitores anchos (Desktop). */
-  width: 100%;                          /* Permite que el formulario se estire hasta ocupar el 100% del ancho disponible de su elemento padre (.contact) en pantallas menores al max-width (Mobile). */
+.contact__form {
+  background-color: transparent;
+  box-shadow: 0 0 5px #0003;
+  border-radius: 8px;
+  padding: 20px;
   
-  padding: 12px;                        /* Genera un espacio interno uniforme de 12px entre los bordes del formulario y su contenido (los fieldset y boton). */
-  margin-bottom: 30px;                  /* Crea una separación inferior de 30px para distanciar el formulario del comienzo del footer de la página. */
-
   display: flex;
   flex-direction: column;
-  gap: 15px;                            /* Define una separación uniforme, centralizada y controlada de 15px entre los elementos hijos principales (fieldsets y el botón submit) en el eje vertical. */
 }
 
-.contact__form fieldset{
-  border-radius: 10px;                  /* Aplica un radio de borde de 10px para suavizar las esquinas del fieldset, integrando la estética moderna y amable de la marca Kámba en el formulario. */
-  padding: 20px;                        /* Define un espacio interno uniforme de 20px (padding) entre los bordes del fieldset y su contenido (los inputs). */
+.contact__fieldset {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
-.contact__input-container :is(input, textarea, select, button){ /* Aplica los estilos de forma agrupada a los inputs, textarea, select y button hijos de .contact__input-container */
-  width: 100%;                          /* Permite que todos los elementos de formulario ocupen el 100% del ancho disponible de su contenedor */
-  padding: 9px;                         /* Crea un espacio uniforme de 9px (padding) entre los bordes del input y su contenido de texto */
-  font-size: 1rem;                      /* Tamaño de fuente relativo (1 * 16px del navegador = 16px) */
-  box-shadow: 2px 2px 4px #0003;      /* Aplica una sombra suave y uniforme (4px de desenfoque) para generar profundidad (elevación) sobre el fondo crema */
-  border: none;                         /* Elimina el borde estético que los navegadores añaden por defecto a los elementos de formulario */
-  margin: 15px 0 15px;                  /* Crea un espacio de 15px en la parte superior e inferior para separar visualmente los inputs entre sí */
-  border-radius: 5px;                   /* Aplica un radio de borde de 5px para suavizar las esquinas de los inputs y botones */
+.contact__form fieldset:hover {
+  border-color: var(--first-alpha-color);
 }
 
-.contact__input-container textarea{
-  resize: none;                         /* Desactiva la capacidad predeterminada del navegador que permite al usuario redimensionar manualmente el cuadro de texto con el mouse */
-  min-height: 120px;                    /* Define una altura mínima de 120px para el área de texto */
+.contact__form legend {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.contact__input-container label {
+    font-weight: 500;
+  margin: 12px 0 5px;
+}
+
+.contact__input-container :is(input, textarea, select){ 
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 0 5px #0003;
   font-family: inherit;                 /* Fuerza al textarea a heredar la familia de fuente definida en sus elementos antecesores (como el 'body') */
 }
 
@@ -517,41 +531,51 @@ body {
   outline: 2px solid var(--first-color);        /* Reemplaza el naranja por defecto por el magenta de la marca */
 }
 
-.contact__input-container button{
+.contact__input-container textarea{
+  resize: none;                         /* Desactiva la capacidad predeterminada del navegador que permite al usuario redimensionar manualmente el cuadro de texto con el mouse */
+  min-height: 120px;                    /* Define una altura mínima de 120px para el área de texto */
+}
+
+.contact__form button[type="submit"] {
   background-color: var(--second-color);
   color: var(--surface-color);
-  padding: 12px;                        /* Crea un espacio uniforme de 12px (padding) entre los bordes del botón y su contenido de texto (será visible arriba y abajo ya que a los laterales se encarga el width: 100% definido antes) */
-  cursor: pointer;                      /* Cambia el cursor predeterminado del navegador por una mano (pointer) al pasar el mouse sobre el botón, indicando que se trata de un elemento interactivo y seleccionable */
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.2rem;
+
+  transition: background-color 0.3s;
+}
+
+.contact__form button[type="submit"]:hover {
+  background-color: var(--first-color);
+}
+
+.contact__address{
+  margin: 20px 0;
+  margin-bottom: 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 /* ---------- MEDIA QUERIES ---------- */
-@media screen and (min-width: 768px){ /* Tablets en horizontal y portátiles pequeñas (md en Bootstrap) */
+@media screen and (min-width: 992px){ /* Tablets en horizontal y portátiles pequeñas (md en Bootstrap) */
 
-  /* ---------- CONTACT SECTION ---------- */
-  .contact__form fieldset{
-    display: grid;                      /* Activa display: grid en todos los fieldset */
-    gap: 12px;                          /* Define una separación uniforme de 12px entre los inputs */
-  }
-
-  .contact__form fieldset:first-child{
-    grid-template-areas:                /* Define las áreas de la grilla para reconfigurar el diseño a dos columnas */
+  .personal-information {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    grid-template-areas: 
     "name lastname"
-    "email phone-number";
-    gap: inherit;                       /* Hereda el gap de 15px del elemento padre (.contact__form) */
+    "email phone";
+    gap: 20px;
   }
-
-  /* Nombrado de áreas para poder hacer uso de la propiedad 'grid-template-areas' definida en el elemento padre (:first-child). 
-    Requiere que estos selectores tengan especificidad para asegurar que las áreas se asignen correctamente. */
-  .contact__input-container:nth-child(2){ grid-area: name; }
-  .contact__input-container:nth-child(3){ grid-area: lastname; }
-  .contact__input-container:nth-child(4){ grid-area: email; }
-  .contact__input-container:nth-child(5){ grid-area: phone-number; }
-
-  /* Reconfigura el segundo fieldset (Información Adicional) para que use Flexbox en columna (Anula el display: grid del selector general) */
-  .contact__form fieldset:last-of-type{
-    display: flex;
-    flex-direction: column;
-  }
+  
+  .name { grid-area: name; }
+  .lastname { grid-area: lastname; }
+  .email { grid-area: email; }
+  .phone { grid-area: phone; }
 }
 
 /* ---------- CONTACT ENDS ---------- */
