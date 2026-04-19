@@ -1,0 +1,70 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins' as m;
+
+/* ---------- PRODUCT SECTION (Mobile) ---------- */
+.products{
+  padding-top: 20px;                    // Agrega un padding superior al contenido principal
+
+  &__section{
+    margin-bottom: 3rem;                // Tamaño de fuente relativo (3 * 16px del navegador = 48px)
+  }
+
+  &__title{
+    text-align: center;                 // Alinea el texto al centro
+    font-size: 2.2rem;                  // Tamaño de fuente relativo (2.2 * 16px del navegador = 35.2px)
+    margin: 30px 0;                     // Crea un espacio superior e inferior para distanciar secciones de productos
+    font-weight: 600;
+  }
+}
+
+.product{
+
+  &-card{
+    background-color: v.$fondo-tarjeta;
+    box-shadow: 2px 2px 10px #0005;   // Sombra: 2px horizontal, 2px vertical, 10px de desenfoque y color negro con 31% de opacidad (#0005)
+    height: 100%;                       // Obliga a todas las cards de una fila a tener la misma altura
+    border-radius: 10px;                // Redondea las esquinas de la card
+    overflow: hidden;                   // Recorta cualquier contenido hijo (como la imagen) que intente sobresalir de las esquinas redondeadas
+    border: none;                       // Quita el borde por defecto de Bootstrap
+    max-width: 240px;                   // Controla el ancho máximo para que no se deforme en móviles de una columna
+    margin: auto;                       // Centra la card si el contenedor es más ancho que el max-width
+
+    transition: transform 0.3s ease;    // Prepara la suavidad del efecto de agrandado para que ocurra en 0.3 segundos
+  
+    &:hover{
+      transform: scale(1.02);           // Aumenta el tamaño de la card un 2% (escala 1.02) al pasar el cursor
+    }
+
+    &__content{
+      display: flex;
+      flex-direction: column;
+      
+    }
+    
+    &__title{
+      color: v.$principal-secundario;
+      text-align: center;               // Alinea el texto al centro
+      font-size: 1.25rem;               // Tamaño de fuente relativo (1.25 * 16px del navegador = 20px)
+    }
+
+    &__price{
+      color: v.$color-principal;
+      font-size: 1.35rem;               // Tamaño de fuente relativo (1.35 * 16px del navegador = 21.6px) */
+      font-weight: 700;                 // Define el peso de la fuente en negrita (Bold) para destacar el valor comercial */
+      text-align: center;               // Alinea el texto al centro */
+    }
+
+    &__btn{
+      @extend %button;
+      margin-top: auto;                   // Absorbe el espacio sobrante para alinear todos los botones en la misma línea
+
+      transition: background-color 0.3s ease;
+
+        &:hover{
+          background-color: v.$principal-secundario;          // Feedback visual al pasar el mouse por el botón
+        }
+    }
+  }
+}
+
+/* ---------- PRODUCT ENDS ---------- */

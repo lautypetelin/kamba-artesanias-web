@@ -1,0 +1,99 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins' as m;
+
+/* ---------- HEADER SECTION (Mobile) ---------- */
+.header{
+  background-color: v.$color-principal;
+  box-shadow: 0 0 5px #0005;          // Sombra sutil
+  position: sticky;                     // Fija el header al scroll respetando su espacio original en el flujo del documento
+  top: 0px;                             // Define el punto de anclaje para el sticky (borde superior)
+  z-index: 10;                          // Asegura que el header se posicione por encima de otros elementos en el eje Z
+
+  &__nav{
+    max-width: 1320px;                  // Limita el punto hasta donde se mueven los elementos del header en pantallas ultra anchas
+    margin: auto;                       // Centra el contenido del header (logo y links)
+  }
+
+  &__logo{
+    height: 3rem;                       // Tamaño de fuente relativo (3 * 16px del navegador = 48px)
+    width: auto;                        // Ancho automático para que no se pierda la relación de aspecto del logo
+
+    filter: drop-shadow(0 0 5px v.$principal-secundario);   // Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG) */
+    transition: filter 0.3s ease, transform 0.3s ease;      // Suaviza la transición del filtro y la escala durante 0.3 segundos
+
+    &:hover{
+      filter: drop-shadow(0 0 5px v.$fondo-pagina);         // Cambia el color de la sombra del logo a blanco
+      transform: scale(1.15);                               // Aumenta el tamaño un 15% para dar feedback visual de interacción
+    }
+  }
+
+  &__open-nav-button{
+    border: none;                       // Elimina el borde del ícono de menú hamburguesa
+
+    &:focus{
+      box-shadow: none;                 // Evita el borde azul predeterminado de los navegadores al hacer click
+    }
+
+    .navbar-toggler-icon{
+      --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28 242, 231, 226 %29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      // Modificación de la variable original del ícono hamburguesa para cambiar el color base
+
+      transition: background-image 0.2s ease-out;           // Cambia el color del ícono del menú hamburguesa en 0.2 segundos
+
+      &:hover{
+        --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28 214, 56, 120 %29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        // Modificación de la variable original del ícono hamburguesa para cambiar el color
+      }
+    }
+  }
+
+  &__nav-list{
+    margin-top: 5px;                    // Genera un espacio de 5px que da aire a los links cuando el menú hamburguesa esta abierto
+  }
+
+  &__nav-item:hover{
+    background-color: v.$color-acento;
+    border-radius: 10px;                // Suaviza los bordes del color de fondo en hover de los links
+  }
+}
+
+.nav-link {
+  color: v.$fondo-pagina;
+  font-size: 1.15rem;                   // Tamaño de fuente relativo (1.15 * 16px del navegador = 18.4px)
+  font-weight: bold;                    // Le da más peso a la fuente de texto de los links
+  text-align: center;                   // Alinea al centro el texto de los links
+
+  transition: color 0.3s ease-in-out,   // Transición de 0.3s de cambio de color al texto del link
+              transform 0.3s ease;      // Transición de 0.3s de cambio de tamaño (escala) en un 6% al texto del link
+
+  &:is(:hover, :focus){
+    color: v.$texto-blanco;
+    transform: scale(1.06);
+  }
+
+  &--active{
+    color: v.$texto-blanco;                                 // Define el color blanco de la fuente al texto del link donde esta situado el usuario
+    text-shadow: 0 0 5px v.$texto-blanco;                   // Define un brillo blanco en el link la página donde esta situado el usuario
+  }
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@include m.tablet{
+  .header{
+
+    &__nav-list{
+      /* margin-left: auto;             /* Reemplazado por la clase 'ms-md-auto' de Bootstrap */
+      margin-top: 0px;                  // Elimina el espaciado vertical usado en el menú desplegable móvil
+      gap: 10px;                        // Establece la separación horizontal entre los items de navegación
+    }
+
+    &__nav-item{
+
+      &:is(:hover, :focus){             // :is() agrupa
+        background-color: transparent;  // Remueve el color de fondo de la versión móvil para usar solo efectos de texto
+      }
+    }
+  }
+}
+
+/* ---------- HEADER ENDS ---------- */

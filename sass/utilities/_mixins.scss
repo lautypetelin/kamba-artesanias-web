@@ -1,0 +1,51 @@
+@use 'variables' as v;
+
+// Mixin de Flex (Se llama con @include)
+@mixin flex($direction: row, 
+            $wrap: nowrap,
+            $jc: flex-start,
+            $ai: stretch,
+            $gap: 0){
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
+}
+
+// Mixin de Tablet
+@mixin tablet{
+  @media screen and (min-width: 768px) {  /* Tablets en horizontal y portátiles pequeñas (md) */
+  
+    @content;
+  }
+}
+
+// Mixin de Desktop
+@mixin desktop{
+  @media screen and (min-width: 992px){ /* Notebooks y PC de escritorio (lg) */
+  
+    @content;
+  }
+}
+
+// Extend (Bloque de código estático, y se llama anteponiendo @extend)
+%button{
+  background-color: v.$color-principal;
+  color: v.$texto-blanco;
+  border: none;                       // Quita el borde que el navegador coloca por defecto
+  border-radius: 10px;                // Redondea las esquinas del boton para darle mayor suavidad
+  box-shadow: 0 0 10px #0005;       // Sombra: 0 horizontal, 0 vertical, 10px de desenfoque y color negro con 31% de opacidad (#0005)
+  width: 100%;                        // Ocupará el 100% del ancho de su elemento contenedor
+  padding: 12px;                      // Agrega un padding superior e inferior (el lateral no lo tendrá en cuenta gracias al width: 100%)
+  font-weight: 600;                   // Agrega mas peso a la fuente del botón */ 
+}
+
+// Rangos Recomendados para Media Queries (CSS):
+
+// Móviles (Portrait): (max-width: 575px) - Estilos para teléfonos pequeños y medianos.
+// Móviles (Landscape) / Tablets: (min-width: 576px) - Tabletas en vertical y móviles grandes.
+// Tablets (Landscape) / Laptops: (min-width: 768px) - Tablets en horizontal y portátiles pequeñas.
+// Escritorio: (min-width: 992px) - Escritorios estándar.
+// Escritorio Grande: (min-width: 1200px) - Pantallas panorámicas.
