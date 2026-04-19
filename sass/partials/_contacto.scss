@@ -1,0 +1,110 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins' as m;
+
+/* ---------- CONTACT SECTION (Mobile) ---------- */
+.contact {
+  padding: 40px 0;
+  
+  &__title{
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+
+  &__form{
+    background-color: transparent;
+    box-shadow: 0 0 5px #0003;
+    border-radius: 8px;
+    padding: 20px;
+    
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__fieldset{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+
+    &:hover{
+      border-color: v.$principal-secundario;
+    }
+  }
+
+  &__legend{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  &__input-container{
+
+    label{
+      font-weight: 500;
+      margin: 12px 0 5px;
+    }
+
+    :is(input, textarea, select){
+      color: v.$texto-oscuro;
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 0 5px #0003;
+      font-family: inherit;             // Fuerza al textarea a heredar la familia de fuente definida en sus elementos antecesores (como el 'body')
+    
+      &:focus{
+        outline: 1px solid v.$principal-secundario;         // Reemplaza el naranja por defecto por el magenta de la marca
+      }
+    }
+
+    textarea{
+      resize: none;                     // Desactiva la capacidad predeterminada del navegador que permite al usuario redimensionar manualmente el cuadro de texto con el mouse
+      min-height: 120px;                // Define una altura mínima de 120px para el área de texto
+    }
+
+    button[type="submit"]{
+      @extend %button;
+      font-size: 1.2rem;
+
+      transition: background-color 0.3s;
+
+      &:hover{
+        background-color: v.$principal-secundario; 
+      }
+    }
+  }
+
+  &__address{
+    margin: 20px 0;
+    margin-bottom: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@include m.desktop{
+
+  .personal-information{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "name lastname"
+    "email phone";
+    gap: 20px;
+  }
+
+  .name { grid-area: name; }
+  .lastname { grid-area: lastname; }
+  .email { grid-area: email; }
+  .phone { grid-area: phone; }
+}
+
+/* ---------- CONTACT ENDS ---------- */

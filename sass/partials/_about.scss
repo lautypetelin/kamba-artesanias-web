@@ -1,0 +1,84 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins' as m;
+
+/* ---------- ABOUT SECTION (Mobile) ---------- */
+.about{
+  padding: 1.25rem 0;                   // Espaciado vertical para separar la sección del header/footer
+
+  &__data{
+    /* La clase 'row' de Bootstrap contiene display: flex */
+    justify-content: center;
+    align-items: center;                // Alineación centrada para la disposición vertical en móviles
+    margin-bottom: 1.25rem;
+  }
+
+  &__content{
+    margin-bottom: 1.5rem;              // Tamaño de fuente relativo (1.5 * 16px del navegador = 24px)
+    text-align: center;                 // Centrado para favorecer la lectura en pantallas chicas
+  }
+
+  &__title{
+    font-size: 2.2rem;                  // Tamaño de fuente relativo (2.2 * 16px del navegador = 35.2px)
+    margin: 30px 0;                     // Margen para jerarquizar el título respecto al contenido
+    font-weight: 600;
+  }
+
+  &__description{
+    text-wrap: pretty;                  // Evita palabras huérfanas/viudas para un bloque de texto armónico
+    font-size: 1.2rem;                  // Tamaño de fuente relativo (1.2 * 16px del navegador = 19.2px)
+    margin: 15px 0;                     // Separación rítmica entre párrafos
+  }
+
+  &__img{
+    width: 100%;
+    height: 100%;
+  
+    /* Mantiene la proporción de la imagen recortando el excedente para llenar el contenedor */
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 15px;                // Aplica un radio de borde para suavizar las esquinas de la imagen
+    box-shadow: 0 0 8px #0009;        // Resalte visual para dar profundidad a la fotografía
+    overflow: hidden;                   // Oculta cualquier contenido que se desborde del contenedor
+  }
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@include m.desktop{
+
+  .about{
+    padding: 5.25rem 0;                 // Incremento del aire visual en pantallas grandes
+
+    &__data{
+      flex-direction: row-reverse;      // Invierte el orden de los flex-items (imagen y texto) para que la imagen quede a la izquierda
+      align-items: stretch;             // Fuerza a que ambas columnas (texto e imagen) tengan la misma altura máxima
+    }
+
+    &__content{
+      text-align: left;                 // Alineación clásica de lectura para párrafos largos en PC
+      padding-left: 3rem;               // Espacio de respiro entre el bloque de texto y la imagen
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;          // Centrado vertical del texto respecto a la altura de la columna vecina
+    }
+
+    &__title{
+      text-align: center;
+    }
+
+    &__img-container{
+      display: flex;                    // Permite que la imagen hija pueda expandirse al 100% de la altura del padre stretch
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    &__img{
+      width: 100%;
+      height: 100%;                     // La imágen mide lo que mide el texto
+      object-fit: cover;
+    }
+  }
+}
+
+/* ---------- ABOUT ENDS ---------- */

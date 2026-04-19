@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Fuente principal   
+$fuente: 'Raleway';
+
+// Marca y Botones
+$color-principal: rgb(186, 34, 95);       // El magenta fuerte (Corregir)
+$principal-secundario: rgb(140, 25, 71);
+$color-acento: rgb(214, 56, 120);         // El magenta claro para hovers
+
+// Textos
+$texto-oscuro: rgb(92, 18, 54);           // Para títulos y párrafos
+$texto-blanco: rgb(255, 255, 255);        // Para leer sobre fondos oscuros
+
+// Fondos y Estructura
+$fondo-pagina: rgb(242, 231, 226);        // El crema de fondo
+$fondo-tarjeta: rgb(255, 255, 255);       // Blanco para destacar bloques

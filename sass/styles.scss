@@ -1,0 +1,17 @@
+// Comando para compilar: sass --watch sass/styles.scss css/styles.css
+
+// 1. Configuraciones (Variables y Mixins)
+@use "utilities/variables";
+
+// 2. Reset y estilos globales
+@use 'base';
+
+// 3. Componentes globales (Header, Footer, Botones)
+@use "components/header";
+@use "components/footer";
+
+// 4. Estilos específicos de cada página
+@use "partials/home";
+@use "partials/productos";
+@use "partials/about";
+@use "partials/contacto";

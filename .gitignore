@@ -1,2 +1,9 @@
-.vscode/
+# Dependencias
 node_modules/
+
+# Archivos generados por Sass
+.sass-cache/
+*.css.map
+
+# Configuración de editores
+.vscode/
