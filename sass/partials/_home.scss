@@ -4,7 +4,7 @@
 /* ---------- HOME SECTION (Mobile) ---------- */
 .hero {
   background: linear-gradient(#0005),                 // Capa de fondo 1: Gradiente negro con 31% de opacidad (#0005) para oscurecer la imagen y resaltar texto blanco
-              url('../assets/hero.png');                // Capa de fondo 2: Imagen principal del hero (.png)
+              url('../assets/hero.webp');               // Capa de fondo 2: Imagen principal del hero (.png)
   background-size: cover;                               // Asegura que la imagen cubra todo el contenedor, escalando y recortando sin perder su proporción original
   background-position: center;                          // Posiciona la imagen siempre en el centro geométrico del contenedor hero
   

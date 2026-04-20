@@ -24,6 +24,7 @@ html {
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -199,7 +200,7 @@ ul {
 /* ---------- FOOTER ENDS ---------- */
 /* ---------- HOME SECTION (Mobile) ---------- */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.3333333333)), url("../assets/hero.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.3333333333)), url("../assets/hero.webp");
   background-size: cover;
   background-position: center;
   color: rgb(242, 231, 226);
