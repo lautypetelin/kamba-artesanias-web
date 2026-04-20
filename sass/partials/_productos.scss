@@ -35,16 +35,22 @@
       transform: scale(1.02);           // Aumenta el tamaño de la card un 2% (escala 1.02) al pasar el cursor
     }
 
+    img{
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+    }
+
     &__content{
       display: flex;
       flex-direction: column;
-      
     }
     
     &__title{
       color: v.$principal-secundario;
       text-align: center;               // Alinea el texto al centro
       font-size: 1.25rem;               // Tamaño de fuente relativo (1.25 * 16px del navegador = 20px)
+      
     }
 
     &__price{
@@ -52,11 +58,13 @@
       font-size: 1.35rem;               // Tamaño de fuente relativo (1.35 * 16px del navegador = 21.6px) */
       font-weight: 700;                 // Define el peso de la fuente en negrita (Bold) para destacar el valor comercial */
       text-align: center;               // Alinea el texto al centro */
+
+      margin-top: auto;                 // Empuja el precio al fondo de la tarjeta
+      margin-bottom: 10px;              // Separación entre el precio y el boton
     }
 
     &__btn{
       @extend %button;
-      margin-top: auto;                   // Absorbe el espacio sobrante para alinear todos los botones en la misma línea
 
       transition: background-color 0.3s ease;
 

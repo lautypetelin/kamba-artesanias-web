@@ -24,7 +24,6 @@ html {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -306,6 +305,11 @@ ul {
 .product-card:hover {
   transform: scale(1.02);
 }
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 .product-card__content {
   display: flex;
   flex-direction: column;
@@ -320,9 +324,10 @@ ul {
   font-size: 1.35rem;
   font-weight: 700;
   text-align: center;
+  margin-top: auto;
+  margin-bottom: 10px;
 }
 .product-card__btn {
-  margin-top: auto;
   transition: background-color 0.3s ease;
 }
 .product-card__btn:hover {
