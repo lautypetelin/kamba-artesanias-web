@@ -1,4 +1,5 @@
 @use 'utilities/variables' as v;
+@use 'utilities/animaciones';
 
 html{ scroll-padding-top: 100px; }      // Otorga 100px de padding superior a todas las anclas internas
 
@@ -33,17 +34,21 @@ ul {
   right: 30px;                          // Lo ubica a 30px del borde derecho de la pantalla
   z-index: 100;                         // Asegura que el logo flote por encima de cualquier otro elemento (como el header o secciones)
 
+  animation: pulse 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+
+  &:hover{
+    animation-play-state: paused;       // Detiene la animación en el fotograma exacto
+  }
+
   img {
-    width: 60px;
+    width: 50px; 
     filter: drop-shadow(0 0 4px #0004);
     transition: transform .25s ease,
                 filter 0.25s ease;
 
     &:hover{
-      transform: scale(1.2)             // Efecto de crecimiento suave y hacia adentro
-                translateY(-5px)      
-                translateX(-5px);          
-      filter: drop-shadow(0 0 8px v.$texto-oscuro);         // Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG)
+      transform: scale(1.2) translateY(-5px) translateX(-5px);        // Efecto de crecimiento suave y hacia adentro
+      filter: drop-shadow(0 0 8px v.$texto-oscuro);                   // Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG)
     }
   }
 }

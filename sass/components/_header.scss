@@ -23,7 +23,7 @@
 
     &:hover{
       filter: drop-shadow(0 0 5px v.$fondo-pagina);         // Cambia el color de la sombra del logo a blanco
-      transform: scale(1.15);                               // Aumenta el tamaño un 15% para dar feedback visual de interacción
+      transform: scale(1.15) rotate(720deg);                // Aumenta el tamaño un 15% y gira 2 veces para dar feedback visual de interacción
     }
   }
 
