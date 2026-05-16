@@ -24,20 +24,20 @@ a {
 // Reset de listas
 ul { 
   list-style: none; 
-  padding-left: 0;                      // Resetea el padding lateral heredado
+  padding-left: 0;
 }
 
 /* Logo de WhatsApp */
 .whatsapp-btn {
-  position: fixed;                      // Posiciona el elemento respecto a la ventana del navegador (viewport), no al documento
-  bottom: 30px;                         // Lo ubica a 30px del borde inferior de la pantalla
-  right: 30px;                          // Lo ubica a 30px del borde derecho de la pantalla
-  z-index: 100;                         // Asegura que el logo flote por encima de cualquier otro elemento (como el header o secciones)
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
 
   animation: pulse 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
 
   &:hover{
-    animation-play-state: paused;       // Detiene la animación en el fotograma exacto
+    animation-play-state: paused;
   }
 
   img {
@@ -47,8 +47,8 @@ ul {
                 filter 0.25s ease;
 
     &:hover{
-      transform: scale(1.2) translateY(-5px) translateX(-5px);        // Efecto de crecimiento suave y hacia adentro
-      filter: drop-shadow(0 0 8px v.$texto-oscuro);                   // Genera una sombra oscura en el contorno real del logo (ideal para archivos PNG)
+      transform: scale(1.2) translateY(-5px) translateX(-5px);
+      filter: drop-shadow(0 0 8px v.$texto-oscuro);
     }
   }
 }

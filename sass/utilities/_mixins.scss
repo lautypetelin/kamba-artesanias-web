@@ -34,12 +34,12 @@
 %button{
   background-color: v.$color-principal;
   color: v.$texto-blanco;
-  border: none;                       // Quita el borde que el navegador coloca por defecto
-  border-radius: 10px;                // Redondea las esquinas del boton para darle mayor suavidad
-  box-shadow: 0 0 10px #0005;       // Sombra: 0 horizontal, 0 vertical, 10px de desenfoque y color negro con 31% de opacidad (#0005)
-  width: 100%;                        // Ocupará el 100% del ancho de su elemento contenedor
-  padding: 12px;                      // Agrega un padding superior e inferior (el lateral no lo tendrá en cuenta gracias al width: 100%)
-  font-weight: 600;                   // Agrega mas peso a la fuente del botón */ 
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0005;
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
 }
 
 // Rangos Recomendados para Media Queries (CSS):

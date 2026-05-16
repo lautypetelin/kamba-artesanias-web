@@ -20,7 +20,7 @@
     <link rel="canonical" href="https://kamba-arte.vercel.app/pages/contacto.html">
 
     <!-- Titulo -->
-    <title>Contacto | Kámba</title>
+    <title>Gracias | Kámba</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/kamba-logo.png" type="image/x-icon">
@@ -65,7 +65,7 @@
                 <a class="nav-link" href="./sobre_kamba.html">Sobre Kámba</a>
               </li>
               <li class="header__nav-item nav-item">
-                <a class="nav-link nav-link--active" aria-current="page" href="./contacto.html">Contacto</a>
+                <a class="nav-link" href="./contacto.html">Contacto</a>
               </li>
             </ul>
 
@@ -75,82 +75,12 @@
       </nav>
     </header>
 
-    <main class="contact">
-      <div class="container">
-
-        <h1 class="contact__title">Envianos tu consulta</h1>
-        
-        <form class="contact__form" action="https://api.web3forms.com/submit" method="POST">
-
-          <input type="hidden" name="access_key" value="3021972c-9ca0-4fca-b093-c1c2c265e57f">
-          <input type="hidden" name="from_name" value="Web Kamba">
-          <input type="hidden" name="subject" value="Correo de Kamba">
-          <input type="hidden" name="redirect" value="https://lautypetelin.github.io/kamba-artesanias-web/pages/gracias.html">
-
-          <fieldset class="contact__fieldset">
-            <legend class="contact__legend">Información personal</legend>
-
-            <div class="personal-information">
-              <div class="contact__input-container name">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="Nombre" placeholder="Ej: Juán" required>
-              </div>
-
-              <div class="contact__input-container lastname">
-                <label for="lastname">Apellido:</label>
-                <input type="text" id="lastname" name="Apellido" placeholder="Ej: Perez" required>
-              </div>
-              
-              <div class="contact__input-container email">
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="Email" placeholder="Ej: correo@mail.com" required>
-              </div>
-
-              <div class="contact__input-container phone-number">
-                <label for="phone-number">Teléfono <span>(Opcional)</span>:</label>
-                <input type="tel" name="phone-number" id="Telefono" placeholder="+0 1234 567891">
-              </div>
-            </div>
-          </fieldset>
-        
-          <fieldset class="contact__fieldset">
-            <legend class="contact__legend">Información adicional</legend>
-
-            <div class="contact__input-container">
-              <label for="product-type">Tipo de producto:</label>
-              <select id="product-type" name="Producto" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <optgroup label="Árte y Pintura">
-                  <option value="Mates">Mates</option>
-                  <option value="Macetas">Macetas</option>
-                  <option value="Velas y Portasahumerios">Velas y Portasahumerios</option>
-                  <option value="Cuadros y Porta Llaves">Cuadros y Porta Llaves</option>
-                </optgroup>
-                <optgroup label="Costura Creativa">
-                  <option value="Cartucheras y Neceseres">Cartucheras y Neceseres</option>
-                  <option value="Accesorios">Accesorios</option>
-                  <option value="Maternidad">Maternidad</option>
-                  <option value="Organización">Organización</option>
-                </optgroup>
-              </select>
-            </div>
-              
-            <div class="contact__input-container">
-              <label for="message">Tu consulta:</label>
-              <textarea id="message" name="Mensaje" cols="30" rows="5" placeholder="Contanos qué necesitas..." required></textarea>
-            </div>
-
-          </fieldset>
-
-          <div class="contact__input-container">
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
-
-        <div class="contact__address ratio ratio-16x9">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53356.94977493072!2d-66.35095096789956!3d-33.29765007474605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d43954196ca6cd%3A0x7fc2e3b4d49ecc83!2sSan%20Luis!5e0!3m2!1ses-419!2sar!4v1776644581474!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        
+    <main class="contact min-vh-100 d-flex justify-content-center align-items-center">
+      <div class="container ">
+        <article class="text-center">
+          <h1 class="contact__title">¡Gracias!</h1>
+          <p class="fs-3">Hemos recibido tu formulario con éxito. Nos pondremos en contacto contigo a la brevedad.</p>
+        </article>
       </div>
     </main>
 

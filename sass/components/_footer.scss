@@ -5,45 +5,44 @@
 .footer {
   background-color: v.$principal-secundario;
   color: v.$texto-blanco;
-  padding: 25px 0;                      // Espaciado interno para separar el contenido de los bordes del footer
+  padding: 25px 0;
 
   .container{
-    display: flex;                      // Layout flexible para apilar secciones en vertical
+    display: flex;
     flex-direction: column;
-    gap: 10px;                          // Espaciado uniforme entre los bloques de Contacto, Enlaces y Redes
+    gap: 10px;
   }
 
   &__column{
-    text-align: center;                 // Centrado de todo el contenido para una mejor jerarquía visual
+    text-align: center;
   }
 
   &__title{
-    font-size: 1.25rem;                 // Tamaño de fuente relativo (1.25 * 16px del navegador = 20px)
-    margin-bottom: 15px;                // Margen inferior para separar el título de la lista de contenidos
+    font-size: 1.25rem;
+    margin-bottom: 15px;
   }
 
   &__list{
-    padding-left: 0;                    // Elimina el padding izquierdo predeterminado de los list-item
+    padding-left: 0;
 
-    // Configuración flex para definir un respiro vertical entre los links
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
   &__list--social{
-    display: flex;                      // Layout horizontal para los iconos de redes sociales
+    display: flex;
     flex-direction: row;
-    justify-content: center;            // Centrado horizontal de los iconos
-    gap: 20px;                          // Espacio de seguridad entre iconos para mejorar la usabilidad táctil
-    font-size: 1.3rem;                  // Tamaño de los iconos de redes sociales (20.8px)
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.3rem;
   }
 
   &__list-item a{
-    transition: color .3s ease;         // Transición suave para el cambio de color en interacción
+    transition: color .3s ease;
 
     &:hover{
-      color: v.$color-acento;           // Feedback visual basado en la identidad de marca
+      color: v.$color-acento;
     }
   }
 }
@@ -54,20 +53,14 @@
   .footer{
 
     .container{
-      flex-direction: row;              // Distribución horizontal para pantallas de tablet y escritorio
-      justify-content: space-around;    // Reparto equitativo de las columnas en el ancho disponible
-      max-width: 1320px;                // Alineación con el ancho máximo del sitio
-      margin: 0 auto 15px auto;         // Centrado horizontal y margen de seguridad inferior
+      flex-direction: row;
+      justify-content: space-around;
+      max-width: 1320px;
+      margin: 0 auto 15px auto;
     }
 
     &__column{
-      flex: 1;                          // Distribución proporcional: cada columna ocupa el mismo ancho inicial
-
-    // flex: 1 es un shorthand de:
-
-    // flex-grow: 1: El elemento puede crecer.
-    // flex-shrink: 1: El elemento puede encogerse si no hay espacio.
-    // flex-basis: 0: El tamaño inicial del elemento antes de repartir el espacio es cero (lo que garantiza que todos se repartan el espacio por igual desde el principio).
+      flex: 1;
     }
   }
 }

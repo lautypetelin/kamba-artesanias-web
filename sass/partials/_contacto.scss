@@ -57,16 +57,16 @@
       border: none;
       font-size: 1rem;
       box-shadow: 0 0 5px #0003;
-      font-family: inherit;             // Fuerza al textarea a heredar la familia de fuente definida en sus elementos antecesores (como el 'body')
+      font-family: inherit;
     
       &:focus{
-        outline: 1px solid v.$principal-secundario;         // Reemplaza el naranja por defecto por el magenta de la marca
+        outline: 1px solid v.$principal-secundario;
       }
     }
 
     textarea{
-      resize: none;                     // Desactiva la capacidad predeterminada del navegador que permite al usuario redimensionar manualmente el cuadro de texto con el mouse
-      min-height: 120px;                // Define una altura mínima de 120px para el área de texto
+      resize: none;
+      min-height: 120px;
     }
 
     button[type="submit"]{
